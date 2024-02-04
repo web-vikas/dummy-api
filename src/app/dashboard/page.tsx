@@ -29,8 +29,8 @@ import {
 const page = () => {
   return (
     <div className="mt-5 max-w-screen-xl mx-auto">
-      <div className="flex items-center gap-3 ">
-        <div className="flex border-2 rounded-md items-center my-2 p-2 py-1.5 w-full shadow-xl">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="flex border-2 rounded-md items-center my-2 p-2 py-1.5 w-full">
           <Label htmlFor="search">
             <MagnifyingGlassIcon className="h-6 w-6 mr-3 opacity-75" />
           </Label>
