@@ -21,6 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+
 export function NewProjectModal() {
   return (
     <AlertDialog>
@@ -34,28 +35,19 @@ export function NewProjectModal() {
         <AlertDialogHeader>
           <AlertDialogTitle>New Project</AlertDialogTitle>
           <AlertDialogDescription>
-            <div className="mb-3">
-              <Label htmlFor="project">Project Name</Label>
+            <div className="flex flex-col gap-3 my-3">
+              <Label htmlFor="project" className="">
+                Project Name
+              </Label>
               <Input id="project" />
-            </div>
-            <div className="mb-3">
-              <Label htmlFor="projectType">Project Type</Label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Theme" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="light">Light</SelectItem>
-                  <SelectItem value="dark">Dark</SelectItem>
-                  <SelectItem value="system">System</SelectItem>
-                </SelectContent>
-              </Select>
             </div>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction><PlusCircledIcon className="mr-3"/> Add</AlertDialogAction>
+          <AlertDialogAction>
+            <PlusCircledIcon className="mr-3" /> Add
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

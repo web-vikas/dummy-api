@@ -1,4 +1,4 @@
-import { Document, Model, Types } from "mongoose";
+import { Document, Model, Types, QueryWithHelpers } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 interface InsertOptions<T extends Document> {
@@ -9,6 +9,18 @@ interface InsertOptions<T extends Document> {
 interface InsertManyOptions<T extends Document> {
   model: Model<T>;
   data: Record<string, any>[];
+}
+
+interface FindOptions<T> {
+  model: Model<T>;
+  where: any;
+  projection?: Record<string, any>;
+  select?: string | null;
+  sort?: string | null;
+  limit?: number | null;
+  skip?: number | null;
+  populate?: string | null;
+  populateField?: string | null;
 }
 
 const Insert = async <T extends Document>({
@@ -37,6 +49,71 @@ const InsertMany = async <T extends Document>({
   }
 };
 
+const Find = async <T extends Document>({
+  model,
+  where,
+  projection = {},
+  select = null,
+  sort = null,
+  limit = null,
+  skip = null,
+  populate = null,
+  populateField = null,
+}: FindOptions<T>): Promise<T[] | false> => {
+  try {
+    const query: QueryWithHelpers<T[], T> = model.find(where, projection);
+
+    if (select) query.select(select);
+    if (sort) query.sort(sort);
+    if (skip) query.skip(skip);
+    if (limit) query.limit(limit);
+
+    if (populate && populateField) {
+      query.populate(populate, populateField);
+    } else if (populate) {
+      query.populate(populate);
+    }
+
+    const docs: any = await query.lean().exec();
+    return docs;
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+};
+
+const FindOne = async ({
+  model,
+  where = null,
+  select = null,
+  populate = null,
+  populateField = null,
+}: any) => {
+  try {
+    let query = model.findOne(where);
+    if (select) query.select(select);
+    if (populate && populateField) query.populate(populate, populateField);
+    else if (populate) query.populate(populate);
+    let doc = await query.lean().exec();
+    if (doc) return doc;
+    else return false;
+  } catch (e) {
+    return false;
+  }
+};
+
+const Aggregate = async ({ model, data }: any) => {
+  try {
+    let query = model.aggregate(data);
+    let doc = await query.exec();
+    if (doc) return doc;
+    else return false;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
 const HandleSuccess = (data: any) => {
   return NextResponse.json({ data }, { status: 200 });
 };
@@ -58,4 +135,13 @@ const HandleServerError = (req: NextRequest, err: any) => {
   return NextResponse.json({ data: "Internal Server Error" }, { status: 500 });
 };
 
-export { Insert, InsertMany, HandleSuccess, HandleError, HandleServerError };
+export {
+  Aggregate,
+  Find,
+  FindOne,
+  HandleError,
+  HandleServerError,
+  HandleSuccess,
+  Insert,
+  InsertMany,
+};
