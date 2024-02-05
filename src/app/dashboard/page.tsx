@@ -26,6 +26,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { NewProjectModal } from "./new-project";
 const page = () => {
   return (
     <div className="mt-5 max-w-screen-xl mx-auto">
@@ -40,12 +41,14 @@ const page = () => {
             className="outline-none border-none bg-transparent w-full placeholder:opacity-75"
           />
         </div>
-        <Button>
-          <PlusCircledIcon className="mr-2 h-4 w-4" /> New Project
-        </Button>
+        <>
+        <NewProjectModal/>
+        </>
       </div>
       <ProjectInfoItem />
+      <ProjectInfoItem />
     </div>
+
   );
 };
 
@@ -54,7 +57,7 @@ export default page;
 const ProjectInfoItem = () => {
   return (
     <>
-      <Card className="rounded-sm p-2 flex items-center justify-between">
+      <Card className="rounded-sm p-2 flex items-center justify-between mb-3">
         <div className="flex items-center gap-4">
           <div>
             <Image height={30} width={30} alt="project-logo" src="/next.svg" />

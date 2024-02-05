@@ -45,6 +45,21 @@ const frameworks = [
     label: "Astro",
   },
 ];
+
+const userInfo = {
+  userName: "web-vikas",
+  projects: [
+    {
+      label: "E-Commerce",
+      value: "e-commerce",
+    },
+    {
+      label: "TODO",
+      value: "todo",
+    },
+  ],
+};
+
 const UserHeader = () => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
@@ -60,7 +75,7 @@ const UserHeader = () => {
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          web-vikas
+          {userInfo.userName}
         </p>
         <SlashIcon className="opacity-15" />
         <>
@@ -73,18 +88,19 @@ const UserHeader = () => {
                 className="w-[200px] justify-between border-none"
               >
                 {value
-                  ? frameworks.find((framework) => framework.value === value)
-                      ?.label
+                  ? userInfo.projects.find(
+                      (framework) => framework.value === value
+                    )?.label
                   : "Select Project..."}
                 <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[200px] p-0">
               <Command>
-                <CommandInput placeholder="Search framework..." />
+                <CommandInput placeholder="Search projects..." />
                 <CommandEmpty>No Project found.</CommandEmpty>
                 <CommandGroup>
-                  {frameworks.map((framework) => (
+                  {userInfo.projects.map((framework) => (
                     <CommandItem
                       key={framework.value}
                       value={framework.value}

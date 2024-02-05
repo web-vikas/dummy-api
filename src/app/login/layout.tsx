@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { Separator } from "@/components/ui/separator";
 
 export default function LoginLayout({
   children,
@@ -10,6 +11,7 @@ export default function LoginLayout({
     <>
       <Header />
       {children}
+      <Separator className="mt-10"/>
       <Footer />
     </>
   );

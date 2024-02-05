@@ -1,9 +1,15 @@
-import React from 'react'
+import ProjectNav from "@/components/project-nav";
+import React from "react";
 
-const page = () => {
+const page = ({ params }: any) => {
+  const { user, project } = params;
+
   return (
-    <div>Settings</div>
-  )
-}
+    <div>
+      <ProjectNav user={user} project={project} />
+      Settings
+    </div>
+  );
+};
 
-export default page
+export default page;
