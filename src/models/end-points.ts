@@ -5,8 +5,9 @@ const EndpointsSchema = new Schema(
     userId: { type: Schema.Types.ObjectId, ref: "users", required: true },
     projectId: { type: Schema.Types.ObjectId, ref: "projects", required: true },
     EndpointName: { type: String, required: true },
+    endpointUrl: { type: String, required: true },
     method: { type: String, required: true },
-    fields: { type: Array },
+    fields: { type: Array, required: true },
   },
   { timestamps: true }
 );

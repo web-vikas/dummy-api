@@ -22,6 +22,31 @@ interface FindOptions<T> {
   populate?: string | null;
   populateField?: string | null;
 }
+const IsExists = async ({ model, where = {}, select = {} }: any) => {
+  try {
+    let query = model.find(where);
+    if (select) query.select(select);
+    let doc = await query.lean().exec();
+    if (doc.length > 0) return doc;
+    else return false;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
+const IsExistsOne = async ({ model, where = {}, select = {} }: any) => {
+  try {
+    let query = model.findOne(where);
+    if (select) query.select(select);
+    let doc = await query.lean().exec();
+    if (doc) return doc;
+    else return false;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
 
 const Insert = async <T extends Document>({
   model,
@@ -102,6 +127,18 @@ const FindOne = async ({
   }
 };
 
+const FindAndUpdate = async ({ model, where = {}, update = {} }: any) => {
+  try {
+    let query = model.findOneAndUpdate(where, update, { new: true });
+    let doc = await query.exec();
+    if (doc) return doc;
+    else return false;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
 const Aggregate = async ({ model, data }: any) => {
   try {
     let query = model.aggregate(data);
@@ -115,11 +152,11 @@ const Aggregate = async ({ model, data }: any) => {
 };
 
 const HandleSuccess = (data: any) => {
-  return NextResponse.json({ data }, { status: 200 });
+  return NextResponse.json(data, { status: 200 });
 };
 
-const HandleError = (message: String) => {
-  return NextResponse.json({ message }, { status: 202 });
+const HandleError = (message: any) => {
+  return NextResponse.json(message, { status: 202 });
 };
 
 const HandleServerError = (req: NextRequest, err: any) => {
@@ -135,13 +172,27 @@ const HandleServerError = (req: NextRequest, err: any) => {
   return NextResponse.json({ data: "Internal Server Error" }, { status: 500 });
 };
 
+const GeneratePassword = (length = 8) => {
+  let result = "";
+  let characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+};
 export {
   Aggregate,
   Find,
+  FindAndUpdate,
   FindOne,
+  GeneratePassword,
   HandleError,
   HandleServerError,
   HandleSuccess,
+  IsExists,
+  IsExistsOne,
   Insert,
   InsertMany,
 };

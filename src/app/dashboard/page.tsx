@@ -1,7 +1,5 @@
 import { Label } from "@/components/ui/label";
-import {
-  MagnifyingGlassIcon
-} from "@radix-ui/react-icons";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { NewProjectModal } from "./new-project";
 import { fetchProjects } from "./action";
 

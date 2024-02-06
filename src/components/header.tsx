@@ -3,7 +3,7 @@ import { NavigationMenuDemo } from "./control/navigation";
 import { TargetIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
-const Header = () => {
+const Header = () => {  
   return (
     <header className="flex justify-between p-3 items-center border-b">
       <Link className="flex justify-center items-center gap-2" href="/">

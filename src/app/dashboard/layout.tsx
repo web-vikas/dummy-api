@@ -14,3 +14,15 @@ export default function DashBoardLayout({
     </>
   );
 }
+
+DashBoardLayout.getInitialProps = ({ req }: any) => {
+  const isServer = !!req;
+  const isBrowser = !req;
+
+  if (isServer) {
+    // Get/set cookies server-side
+    console.log("server");
+  } else {
+    console.log("client");
+  }
+};

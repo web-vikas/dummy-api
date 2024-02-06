@@ -3,46 +3,84 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { EnterIcon, LockClosedIcon } from "@radix-ui/react-icons";
-import React, { useState } from "react";
-
+import React, { FormEvent, useState } from "react";
+import { isUserExist } from "./action";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 const page = () => {
   const [isStepOne, setIsStepOne] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isEmailAlreadyExist, setIsEmailAlreadyExist] = useState(false);
+  const router = useRouter();
+  const continueAction = async (e: FormEvent) => {
+    e.preventDefault();
+    const res = await isUserExist(email);
+    if (res.status) {
+      setIsEmailAlreadyExist(true);
+      setIsStepOne(false);
+    }
+  };
+  const handelLogin = async (e: FormEvent) => {
+    e.preventDefault();
+    const res = await axios.post(`http://localhost:3000/api/user/login`, {
+      userName: email,
+      password,
+    });
+    if (res.data.status) {
+      router.push("/dashboard");
+    }
+  };
+
   return (
-    <div
+    <form
       className={`${
         isStepOne ? "mb-32 md:mb-52" : "mb-16"
       } mx-auto max-w-screen-sm mt-16 `}
+      onSubmit={
+        !isStepOne && isEmailAlreadyExist ? handelLogin : continueAction
+      }
     >
       <h1 className="text-4xl font-extrabold text-center my-10 ">
         Join Fake/api
       </h1>
-      <div className="mb-3">
+      <div className="flex flex-col gap-2 mb-3">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" placeholder="email@gmail.com" />
+        <Input
+          id="email"
+          placeholder="email@gmail.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
       {isStepOne ? (
-        <Button onClick={() => setIsStepOne(false)}>Continue</Button>
+        <Button onClick={continueAction}>Continue</Button>
       ) : isEmailAlreadyExist ? (
-        <LoginForm />
+        <LoginForm _this={{ password, setPassword, handelLogin }} />
       ) : (
         <SignUpForm />
       )}
-    </div>
+    </form>
   );
 };
 
 export default page;
 
-const LoginForm = () => {
+const LoginForm = ({ _this }: any) => {
   return (
     <div>
-      <div className="mb-3">
+      <div className="flex flex-col gap-2 mb-3">
         <Label htmlFor="password">Password</Label>
-        <Input id="password" type="password" placeholder="********" />
+        <Input
+          id="password"
+          type="password"
+          placeholder="********"
+          value={_this.password}
+          onChange={(e) => _this.setPassword(e.target.value)}
+        />
       </div>
       <div>
-        <Button>
+        <Button type="submit">
           <LockClosedIcon className="mr-3" />
           Login
         </Button>
