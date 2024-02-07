@@ -10,7 +10,6 @@ import PhoneModel from "@/models/phone";
 connect();
 
 export async function GET(req: NextRequest) {
-  console.log(req.nextUrl.pathname);
 
   return NextResponse.json({ data: "hello" });
 }

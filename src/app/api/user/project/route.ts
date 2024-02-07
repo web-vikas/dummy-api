@@ -1,5 +1,7 @@
 import { connect } from "@/config/db";
 import {
+  Find,
+  FindOne,
   HandleError,
   HandleServerError,
   HandleSuccess,
@@ -7,23 +9,44 @@ import {
 } from "@/helper/mongoose";
 import { NextRequest, NextResponse } from "next/server";
 import ProjectModel from "@/models/projects";
+import { isValidUser } from "@/helper/isValidUser";
 connect();
 
 export async function GET(req: NextRequest) {
-  console.log(req.nextUrl.pathname);
+  const token = req.headers.get("authorization") || "";
+  const isValid = await isValidUser(token);
 
-  return NextResponse.json({ data: "hello" });
+  if (!isValid) {
+    return NextResponse.json({ message: "UnAuthorized" }, { status: 401 });
+  }
+  const projects = await Find({
+    model: ProjectModel,
+    where: { userId: isValid._id },
+    select: "projectName",
+  });
+
+  return NextResponse.json(projects, { status: 200 });
 }
 
 export async function POST(req: NextRequest) {
   try {
     const bodyData = await req.json();
-    const userId = "65c0817a2e77b8292edafb40";
-    const { projectName } = bodyData;
+    const { userId, projectName, projectUrl } = bodyData;
+
+    const existingProject = await FindOne({
+      model: ProjectModel,
+      where: { userId, projectUrl },
+    });
+
+    if (existingProject) {
+      return HandleError("Project already exist !");
+    }
+
     const insertData = await Insert({
       model: ProjectModel,
       data: {
         projectName,
+        projectUrl,
         userId,
       },
     });
