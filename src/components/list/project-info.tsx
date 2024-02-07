@@ -2,19 +2,30 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
   DotsHorizontalIcon,
-  ExternalLinkIcon, StarIcon
+  ExternalLinkIcon,
+  StarIcon,
 } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import {
   DropdownMenu,
-  DropdownMenuContent, DropdownMenuItem, DropdownMenuShortcut, DropdownMenuTrigger
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 export interface ProjectInfoProps {
   _id: string;
   projectName: string;
+  projectUrl: string;
+  user?: string;
 }
-const ProjectInfoItem = ({ _id, projectName }: ProjectInfoProps) => {
+const ProjectInfoItem = ({
+  _id,
+  projectName,
+  projectUrl,
+  user,
+}: ProjectInfoProps) => {
   return (
     <>
       <Card className="rounded-sm p-2 flex items-center justify-between mb-3">
@@ -23,18 +34,12 @@ const ProjectInfoItem = ({ _id, projectName }: ProjectInfoProps) => {
             <Image height={30} width={30} alt="project-logo" src="/next.svg" />
           </div>
           <div className="flex flex-col">
-            <Link
-              href={`/web-vikas/${projectName
-                .toLowerCase()
-                .replaceAll(" ", "-")}`}
-              className="hover:underline"
-            >
+            <Link href={`/${user}/${projectUrl}`} className="hover:underline">
               <h2>{projectName}</h2>
             </Link>
-            <Link href="/" className=" text-sm opacity-70">
+            <Link href={`#`} className=" text-sm opacity-70">
               <p className="font-extralight inline-flex items-center gap-2 hover:underline">
-                fake-api.com/username/
-                {projectName.toLowerCase().replaceAll(" ", "-")}
+                fake-api.com/{user}/{projectUrl}
                 <ExternalLinkIcon />
               </p>
             </Link>

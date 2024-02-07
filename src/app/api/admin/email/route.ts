@@ -10,7 +10,6 @@ import EmailModel from "@/models/email";
 connect();
 
 export async function GET(req: NextRequest) {
-  console.log(req.nextUrl.pathname);
 
   return NextResponse.json({ data: "hello" });
 }

@@ -52,9 +52,6 @@ export async function GET(req: NextRequest, { params }: any) {
   const { endpoint } = params;
 
   const data = await checkEndpointExistence(endpoint);
-
-  console.log(data);
-
   if (!data) {
     return HandleError("Such Endpoint Doesn't Exist !");
   }
@@ -69,9 +66,6 @@ export async function POST(req: NextRequest, { params }: any) {
   const { endpoint } = params;
 
   const data = await checkEndpointExistence(endpoint);
-
-  console.log(data);
-
   if (!data) {
     return HandleError("Such Endpoint Doesn't Exist !");
   }

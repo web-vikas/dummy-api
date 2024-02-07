@@ -16,12 +16,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 export interface EndpointInfoProps {
-  _id?: string;
-  EndpointName: string;
+  _id: string;
+  endpoint: string;
   method: string;
+  user: string;
+  project?: string;
 }
 
-const EndPointItem = ({ EndpointName, method }: EndpointInfoProps) => {
+const EndPointItem = ({
+  endpoint,
+  method,
+  user,
+  project,
+}: EndpointInfoProps) => {
   return (
     <Card className="rounded-sm p-2 flex items-center justify-between mb-3">
       <div className="flex items-center gap-4">
@@ -29,22 +36,22 @@ const EndPointItem = ({ EndpointName, method }: EndpointInfoProps) => {
           <Image height={30} width={30} alt="project-logo" src="/next.svg" />
         </div>
         <div className="flex flex-col">
-          <Link href="/" className="hover:underline">
-            <h2>{EndpointName}</h2>
-          </Link>
-          <Link
-            href="/"
-            className=" text-sm opacity-70 flex gap-2 items-center"
-          >
-            <p className="font-extralight inline-flex items-center gap-2 hover:underline">
-              fake-api.com/user/
-              {EndpointName.toLowerCase().replaceAll(" ", "-")}
-            </p>
+          <h2>{endpoint}</h2>
+          <div className="flex items-center gap-2">
+            <Link
+              href={`/api/${user}/${project}/${endpoint}`}
+              className=" text-sm opacity-70 flex gap-2 items-center"
+              target="_blank"
+            >
+              <p className="font-extralight inline-flex items-center gap-2 hover:underline">
+                fake-api.com/{user}/{project}/{endpoint}
+              </p>
+            </Link>
             <ClipboardCopyIcon />
             <Button size={"sm"} className="h-5 p-1 ml-3">
               {method}
             </Button>
-          </Link>
+          </div>
         </div>
       </div>
       <div>

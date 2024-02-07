@@ -15,7 +15,6 @@ connect();
 export async function GET(req: NextRequest) {
   const token = req.headers.get("authorization") || "";
   const isValid = await isValidUser(token);
-  console.log(isValid);
 
   if (!isValid) {
     return NextResponse.json({ message: "UnAuthorized" }, { status: 401 });

@@ -10,7 +10,6 @@ export async function GET(req: NextRequest, { params }: any) {
     where: { projectId: "65c0e3e402474905fcd02f50" },
     select: "EndpointName method",
   });
-  console.log(projects);
 
   return NextResponse.json(projects);
 }
