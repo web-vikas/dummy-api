@@ -1,10 +1,13 @@
 "use server";
 
+import { connect } from "@/config/db";
 import { isValidUser } from "@/helper/isValidUser";
 import { Find, FindAndUpdate, FindOne, Insert } from "@/helper/mongoose";
 import EndpointModel from "@/models/end-points";
 import ProjectModel from "@/models/projects";
 import { cookies } from "next/headers";
+connect()
+
 export async function fetchEndPoints(project: string) {
   try {
     const token = cookies().get("user-token")?.value || "";

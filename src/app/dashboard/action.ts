@@ -1,10 +1,14 @@
 "use server";
 
+import { connect } from "@/config/db";
 import { isValidUser } from "@/helper/isValidUser";
 import { Find, FindOne, Insert } from "@/helper/mongoose";
 import ProjectModel from "@/models/projects";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+
+connect()
+
 export async function fetchProjects() {
   try {
     const token = cookies().get("user-token")?.value || "";

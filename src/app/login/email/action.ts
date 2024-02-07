@@ -3,6 +3,9 @@ import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { FindAndUpdate, FindOne } from "@/helper/mongoose";
 import UserModel from "@/models/users";
+import { connect } from "@/config/db";
+connect()
+
 export const userLogin = async (formData: FormData) => {
   try {
     const email = formData.get("email");
