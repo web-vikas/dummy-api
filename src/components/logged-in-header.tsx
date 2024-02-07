@@ -38,6 +38,9 @@ const UserHeader = ({ name }: any) => {
                 <Link href="/dashboard">Dashboard</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
+                <Link href="/dashboard/token">My Token</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
                 <LogoutForm />
               </DropdownMenuItem>
             </DropdownMenuContent>

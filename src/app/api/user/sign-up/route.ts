@@ -1,5 +1,6 @@
 import { connect } from "@/config/db";
 import {
+  GeneratePassword,
   HandleError,
   HandleServerError,
   HandleSuccess,
@@ -10,7 +11,6 @@ import UserModel from "@/models/users";
 connect();
 
 export async function GET(req: NextRequest) {
-
   return NextResponse.json({ data: "hello" });
 }
 
@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
       data: {
         userName,
         email,
+        apiToken: GeneratePassword(13),
       },
     });
     if (!insertData) return HandleError("Failed to insert");

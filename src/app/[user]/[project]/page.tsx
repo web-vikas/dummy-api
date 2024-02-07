@@ -12,7 +12,7 @@ const page = async ({ params }: any) => {
   const data = await fetchEndPoints(project);
   return (
     <div className="max-w-screen-xl mx-auto">
-      <ProjectNav user={"user"} project={project} />
+      <ProjectNav user={data.user} project={project} />
       <div className="flex justify-end mt-3">
         <Link
           href={`/${data.user}/${project}/new-endpoint`}

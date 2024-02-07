@@ -9,10 +9,11 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { buttonVariants } from "../ui/button";
 
 export function NavigationMenuDemo() {
   return (
-    <NavigationMenu >
+    <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
@@ -25,6 +26,13 @@ export function NavigationMenuDemo() {
           <Link href="/login" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Login
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/sign-up" legacyBehavior passHref>
+            <NavigationMenuLink className={buttonVariants()}>
+              Sign Up
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

@@ -33,7 +33,9 @@ const page = async () => {
               _id={item._id}
               projectName={item.projectName}
               projectUrl={item.projectUrl}
+              endpoints={item.endpoints.length}
               user={data.user}
+              createdAt={item.createdAt}
             />
           ))
         ) : (

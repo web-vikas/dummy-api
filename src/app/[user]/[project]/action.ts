@@ -5,8 +5,9 @@ import { isValidUser } from "@/helper/isValidUser";
 import { Find, FindAndUpdate, FindOne, Insert } from "@/helper/mongoose";
 import EndpointModel from "@/models/end-points";
 import ProjectModel from "@/models/projects";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
-connect()
+connect();
 
 export async function fetchEndPoints(project: string) {
   try {
@@ -25,6 +26,7 @@ export async function fetchEndPoints(project: string) {
 
     if (!endpoints || endpoints.endpoints.length == 0) {
       return {
+        user: isValid.userName,
         error: "0 Endpoint Founds !",
       };
     }
@@ -108,6 +110,8 @@ export async function addEndpoint({ name, method, newData, project }: any) {
       return {
         error: "Failed to Update",
       };
+
+    revalidatePath(`/${isValid.userName}/${project}`);
 
     return {
       message: `Added Successfully`,

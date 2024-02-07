@@ -5,7 +5,7 @@ import { addEndpoint } from "../action";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-const Page = (params: any) => {
+const Page = ({params}:any) => {
   interface Field {
     fieldName: string;
     type: string;

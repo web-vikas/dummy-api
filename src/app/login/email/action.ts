@@ -3,12 +3,19 @@ import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { FindAndUpdate, FindOne } from "@/helper/mongoose";
 import UserModel from "@/models/users";
+import bcrypt from "bcrypt";
 import { connect } from "@/config/db";
-connect()
+connect();
 
 export const userLogin = async (formData: FormData) => {
   try {
     const email = formData.get("email");
+    const password = formData.get("password")?.toString();
+    if (!password) {
+      return {
+        error: "Please Enter Password",
+      };
+    }
     const existingUser = await FindOne({
       model: UserModel,
       where: { email: email },
@@ -19,6 +26,17 @@ export const userLogin = async (formData: FormData) => {
         error: "User Not Exist !",
       };
     }
+    console.log(existingUser);
+
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      existingUser.password
+    );
+
+    if (!isPasswordCorrect)
+      return {
+        error: "Password Incorrect !",
+      };
 
     const access_token = jwt.sign(
       { id: existingUser._id, email: existingUser.email },
