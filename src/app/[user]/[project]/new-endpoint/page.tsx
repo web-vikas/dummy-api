@@ -5,19 +5,20 @@ import { addEndpoint } from "../action";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-interface Field {
-  fieldName: string;
-  type: string;
-}
-interface OriginalFormat {
-  fieldName: string;
-  type: string;
-}
+const Page = (params: any) => {
+  interface Field {
+    fieldName: string;
+    type: string;
+  }
+  interface OriginalFormat {
+    fieldName: string;
+    type: string;
+  }
 
-interface NewFormat {
-  [fieldName: string]: string;
-}
-const page: React.FC = ({ params }: any) => {
+  interface NewFormat {
+    [fieldName: string]: string;
+  }
+
   const router = useRouter();
   const { user, project } = params;
   const [fields, setFields] = useState<Field[]>([]);
@@ -125,4 +126,4 @@ const page: React.FC = ({ params }: any) => {
   );
 };
 
-export default page;
+export default Page;
