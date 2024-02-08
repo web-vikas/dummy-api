@@ -2,6 +2,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
+import { z } from "zod";
 import {
   FindAndUpdate,
   FindOne,
@@ -11,19 +12,48 @@ import {
 import UserModel from "@/models/users";
 import { connect } from "@/config/db";
 connect();
-
+const usernameRegex = /^[a-zA-Z0-9_]+$/;
+const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+=[\]{};':"\\|,.<>/?]+$/; 
 export const userRegister = async (formData: FormData) => {
+  const formDataSchema = z.object({
+    email: z.string().email({ message: "Invalid Email!" }),
+    username: z
+      .string()
+      .min(6, { message: "Username must be at least 6 characters long!" })
+      .regex(usernameRegex, {
+        message: "Username must contain only letters, digits, and underscores.",
+      }),
+    name: z.string({
+      required_error: "Name is required",
+      invalid_type_error: "Name field is required!",
+    }),
+    password: z
+      .string()
+      .min(8, { message: "Password must be at least 8 characters long!" })
+      .regex(passwordRegex, {
+        message:
+          "Password must contain only letters, digits, and special characters.",
+      }),
+  });
+  const email = formData.get("email");
+  const username = formData.get("username");
+  const name = formData.get("name");
+  const password = formData.get("password")?.toString() || "";
   try {
-    const email = formData.get("email");
-    const username = formData.get("username");
-    const name = formData.get("name");
-    const password = formData.get("password")?.toString() || "";
+    formDataSchema.parse({
+      email: email as string,
+      username: username as string,
+      name: name as string,
+      password: password as string,
+    });
+  } catch (error: any) {
+    console.log(error.errors[0]);
+    return {
+      error: error.errors[0].message,
+    };
+  }
 
-    if (!password || password.length > 5) {
-      return {
-        error: "invalid password !",
-      };
-    }
+  try {
     const password_hash = await bcrypt.hash(password, 16);
     let existingUser = await FindOne({
       model: UserModel,

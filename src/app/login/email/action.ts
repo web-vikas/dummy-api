@@ -11,6 +11,11 @@ export const userLogin = async (formData: FormData) => {
   try {
     const email = formData.get("email");
     const password = formData.get("password")?.toString();
+    if (!email) {
+      return {
+        error: "Please Enter email",
+      };
+    }
     if (!password) {
       return {
         error: "Please Enter Password",

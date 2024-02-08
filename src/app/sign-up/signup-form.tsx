@@ -6,15 +6,17 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
 
 export const SignUpForm = async () => {
+  const router = useRouter();
   const handelClientAction = async (formData: FormData) => {
     const res = await userRegister(formData);
     if (res?.error) {
       toast.error(res.error);
     } else {
       toast.success(res.message);
-      redirect("/dashboard");
+      router.push("/dashboard");
     }
   };
 
