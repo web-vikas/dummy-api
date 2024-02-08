@@ -36,17 +36,18 @@ const EndPointItem = ({
           <Image height={30} width={30} alt="project-logo" src="/next.svg" />
         </div>
         <div className="flex flex-col">
-          <h2>{endpoint}</h2>
+          <Link
+            href={`/api/${user}/${project}/${endpoint}`}
+            className=" text-xl  hover:underline"
+            target="_blank"
+          >
+            <h2>{endpoint}</h2>
+          </Link>
           <div className="flex items-center gap-2">
-            <Link
-              href={`/api/${user}/${project}/${endpoint}`}
-              className=" text-sm opacity-70 flex gap-2 items-center"
-              target="_blank"
-            >
-              <p className="font-extralight inline-flex items-center gap-2 hover:underline">
-                fake-api.com/{user}/{project}/{endpoint}
-              </p>
-            </Link>
+            <p className="font-extralight inline-flex items-center gap-2">
+              {user}/{project}/{endpoint}
+            </p>
+
             <ClipboardCopyIcon />
             <Button size={"sm"} className="h-5 p-1 ml-3">
               {method}

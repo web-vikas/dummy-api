@@ -22,11 +22,11 @@ const Footer = () => {
   const { setTheme } = useTheme();
 
   return (
-    <footer className="mx-auto max-w-screen-xl mt-8">
+    <footer className="mx-auto max-w-screen-xl mt-8 p-2">
       <div className="flex  justify-between">
         <div className="flex items-center">
-          <TargetIcon className="h-8 w-8" />
-          <p className="ms-2">© 2024 Vikas Patel</p>
+          <TargetIcon className="h-7 w-7" />
+          <p className="ms-2">© fake/api</p>
         </div>
         <div>
           <Button size="icon" variant="ghost" onClick={() => setTheme("light")}>
@@ -44,41 +44,27 @@ const Footer = () => {
           </Button>
         </div>
       </div>
-      <div className="mt-5">
-        <NavigationMenu>
-          <NavigationMenuList className="gap-6">
+      <div className="mt-5 flex justify-center">
+        <NavigationMenu >
+          <NavigationMenuList className="gap-6 justify-center">
             <NavigationMenuItem>
               <Link href="/docs" legacyBehavior passHref>
                 <NavigationMenuLink >
-                  Documentation
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>
-                <NavigationMenuLink >
-                  Home
+                 Home
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/login" legacyBehavior passHref>
                 <NavigationMenuLink >
-                Help
+                Login
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/login" legacyBehavior passHref>
+              <Link href="/sign-up" legacyBehavior passHref>
                 <NavigationMenuLink >
-                Contact Sales
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/login" legacyBehavior passHref>
-                <NavigationMenuLink >
-                Blog
+                Sign Up
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
