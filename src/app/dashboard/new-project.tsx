@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PlusCircledIcon } from "@radix-ui/react-icons";
+import { PlusCircledIcon, PlusIcon } from "@radix-ui/react-icons";
 import { addProject } from "./action";
 import { toast } from "sonner";
 
@@ -28,7 +28,10 @@ export function NewProjectModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">New Project</Button>
+        <Button variant="outline">
+          <PlusCircledIcon className="md:mr-3" />
+          <span className="hidden md:block">New Project</span>
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <form action={handelClientAction}>

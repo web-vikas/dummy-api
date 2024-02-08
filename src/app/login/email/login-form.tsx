@@ -5,22 +5,21 @@ import { userLogin } from "./action";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
 
 export const LoginForm = async () => {
-  const router = useRouter();
   const handelClientAction = async (formData: FormData) => {
     const res = await userLogin(formData);
     if (res?.error) {
       toast.error(res.error);
     } else {
       toast.success(res.message);
-      router.push("/dashboard");
+      redirect("/dashboard");
     }
   };
 
   return (
-    <form action={handelClientAction}>
+    <form action={handelClientAction} className="mx-4">
       <div className="flex flex-col gap-3 mb-3">
         <Label htmlFor="email">Email</Label>
         <Input id="email" placeholder="email@gmail.com" name="email" />

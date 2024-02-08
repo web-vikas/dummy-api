@@ -11,8 +11,8 @@ import React from "react";
 const page = () => {
   return (
     <div className="">
-      <div className="mt-11 md:mt-20 mx-auto max-w-96">
-        <h1 className="text-3xl font-extrabold mb-6 text-center">
+      <div className="mt-11 md:mt-20 mx-auto max-w-96 max-[400px]:p-4">
+        <h1 className="text-3xl max-sm:text-2xl font-extrabold mb-6 text-center">
           Login into Fake / Api
         </h1>
         <div className="flex flex-col gap-3">

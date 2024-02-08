@@ -4,8 +4,19 @@ import React, { useState } from "react";
 import { addEndpoint } from "../action";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { PlusCircledIcon, TrashIcon } from "@radix-ui/react-icons";
+import { Separator } from "@/components/ui/separator";
 
-const Page = ({params}:any) => {
+const Page = ({ params }: any) => {
   interface Field {
     fieldName: string;
     type: string;
@@ -67,61 +78,99 @@ const Page = ({params}:any) => {
   };
 
   return (
-    <div className="flex flex-col gap-3">
-      <input
-        name="endpointName"
-        placeholder="endpointName"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <select
-        name="method"
-        value={method}
-        onChange={(e) => setMethod(e.target.value)}
-      >
-        <option value="">Select Value Type</option>
-        <option value="POST">POST</option>
-        <option value="GET">GET</option>
-      </select>
-      {fields.map((field, index) => (
-        <div key={index}>
+    <div className="flex flex-col gap-3 mt-11  mx-auto max-w-7xl max-sm:p-5">
+      <div className="flex gap-2 w-full">
+        <div className="flex-1">
+          <Label htmlFor="end">Endpoint Name</Label>
           <Input
-            type="text"
-            name="fieldName"
-            placeholder="field"
-            value={field.fieldName}
-            onChange={(e) => handleChange(index, e)}
+            name="endpointName"
+            id="end"
+            placeholder="Example - Get Data"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
-
-          <select
-            name="type"
-            value={field.type}
-            onChange={(e) => handleChange(index, e)}
-          >
-            <option value="">Select Value Type</option>
-            <option value="person.gender">Gender</option>
-            <option value="person.prefix">Prefix</option>
-            <option value="person.firstName">First Name</option>
-            <option value="person.middleName">Middle Name</option>
-            <option value="person.lastName">Last Name</option>
-            <option value="person.fullName">Full Name</option>
-            <option value="person.jobTitle">Job Title</option>
-            <option value="person.bio">Bio</option>
-            <option value="person.zodiacSign">Zodiac Sign</option>
-            <option value="person.phone">Phone</option>
-            <option value="person.avatar">Avatar</option>
-            <option value="person.email">Email</option>
-            <option value="address.state">State</option>
-            <option value="address.zipCode">Zip Code</option>
-            <option value="address.country">Country</option>
-            <option value="address.streetAddress">Street Address</option>
-            <option value="address.city">City</option>
-          </select>
-          <button onClick={() => handleRemoveField(index)}>Remove</button>
+        </div>
+        <div className="flex-1">
+          <Label>Request Method</Label>
+          <Select value={method} onValueChange={(e) => setMethod(e)}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select Method" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="GET">GET</SelectItem>
+              <SelectItem value="POST">POST</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+      <>
+        <Separator className="my-3" />
+        <div className="flex justify-between items-center">
+          <Label className="font-extrabold text-xl">Add Fields</Label>
+          <Button onClick={handleAddField}>
+            <PlusCircledIcon className="mr-3" />
+            Add Field
+          </Button>
+        </div>
+      </>
+      {fields.map((field, index) => (
+        <div key={index} className="flex items-center gap-2">
+          <div className=" flex-1">
+            <Label htmlFor={"f" + index}>Field Name</Label>
+            <Input
+              type="text"
+              name="fieldName"
+              placeholder="Example - Name"
+              value={field.fieldName}
+              onChange={(e) => handleChange(index, e)}
+              id={"f" + index}
+            />
+          </div>
+          <div className="flex flex-col flex-1 gap-2">
+            <Label>Value Type</Label>
+            <select
+              name="type"
+              value={field.type}
+              onChange={(e) => handleChange(index, e)}
+              className="px-2 py-1.5 rounded-md bg-primary-foreground border"
+            >
+              <option value="">Select Value Type</option>
+              <option value="person.gender">Gender</option>
+              <option value="person.prefix">Prefix</option>
+              <option value="person.firstName">First Name</option>
+              <option value="person.middleName">Middle Name</option>
+              <option value="person.lastName">Last Name</option>
+              <option value="person.fullName">Full Name</option>
+              <option value="person.jobTitle">Job Title</option>
+              <option value="person.bio">Bio</option>
+              <option value="person.zodiacSign">Zodiac Sign</option>
+              <option value="person.phone">Phone</option>
+              <option value="person.avatar">Avatar</option>
+              <option value="person.email">Email</option>
+              <option value="address.state">State</option>
+              <option value="address.zipCode">Zip Code</option>
+              <option value="address.country">Country</option>
+              <option value="address.streetAddress">Street Address</option>
+              <option value="address.city">City</option>
+            </select>
+          </div>
+          <div>
+            <Button
+              size={"icon"}
+              variant={"destructive"}
+              onClick={() => handleRemoveField(index)}
+              className="mt-6"
+            >
+              <TrashIcon />
+            </Button>
+          </div>
         </div>
       ))}
-      <button onClick={handleAddField}>Add Field</button>
-      <button onClick={handelSubmit}>Submit</button>
+      <div className="">
+        <Button onClick={handelSubmit} variant="secondary">
+          Submit
+        </Button>
+      </div>
     </div>
   );
 };

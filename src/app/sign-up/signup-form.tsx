@@ -6,22 +6,20 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
-import { useRouter } from "next/router";
 
-export const SignUpForm = async () => {
-  const router = useRouter();
+export const SignUpForm = () => {
   const handelClientAction = async (formData: FormData) => {
     const res = await userRegister(formData);
     if (res?.error) {
       toast.error(res.error);
     } else {
       toast.success(res.message);
-      router.push("/dashboard");
+      redirect("/dashboard");
     }
   };
 
   return (
-    <form action={handelClientAction}>
+    <form action={handelClientAction} className="mx-auto max-w-screen-sm ">
       <div className="flex flex-col gap-3 mb-3">
         <Label htmlFor="email">Email</Label>
         <Input id="email" placeholder="email@gmail.com" name="email" />

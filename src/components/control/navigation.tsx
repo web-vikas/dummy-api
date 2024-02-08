@@ -14,27 +14,19 @@ import { buttonVariants } from "../ui/button";
 export function NavigationMenuDemo() {
   return (
     <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
+      <NavigationMenuList className="gap-2 max-sm:text-sm">
+        {/* <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
+            <NavigationMenuLink>Documentation</NavigationMenuLink>
           </Link>
+        </NavigationMenuItem> */}
+        <NavigationMenuItem>
+          <NavigationMenuLink href="/login" className="hover:underline" >Login</NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/login" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Login
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/sign-up" legacyBehavior passHref>
-            <NavigationMenuLink className={buttonVariants()}>
-              Sign Up
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuLink href="/sign-up" className="hover:underline">
+            Sign Up
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
