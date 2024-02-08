@@ -8,7 +8,7 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const page = () => {
+const LoginPage = () => {
   return (
     <div className="">
       <div className="mt-11 md:mt-20 mx-auto max-w-96 max-[400px]:p-4">
@@ -35,4 +35,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default LoginPage;

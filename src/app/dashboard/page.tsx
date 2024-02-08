@@ -6,7 +6,7 @@ import ProjectInfoItem, {
   ProjectInfoProps,
 } from "@/components/list/project-info";
 
-const page = async () => {
+const Dashboard = async () => {
   const data = await fetchProjects();
   return (
     <>
@@ -46,4 +46,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Dashboard;

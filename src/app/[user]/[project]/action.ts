@@ -7,6 +7,7 @@ import EndpointModel from "@/models/end-points";
 import ProjectModel from "@/models/projects";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { z } from "zod";
 connect();
 
 export async function fetchEndPoints(project: string) {
@@ -43,10 +44,28 @@ export async function fetchEndPoints(project: string) {
 }
 
 export async function addEndpoint({ name, method, newData, project }: any) {
+  const newDataSchema = z.object({
+    name: z.string().min(4, { message: "Invalid Endpoint Name !" }),
+    method: z.string({ required_error: "Invalid Method !" }),
+  });
+  console.log(newData);
+
+  const data = {
+    name,
+    method,
+  };
   try {
-    if (!project || project.toString.length > 3) {
+    newDataSchema.parse(data);
+  } catch (error: any) {
+    return {
+      error: error.errors[0].message,
+    };
+  }
+
+  try {
+    if (!newData || newData.length == 0) {
       return {
-        error: "Invalid Project Name !",
+        error: "Please Add Some Fields.",
       };
     }
     const endpointUrl = name.toLowerCase().replaceAll(" ", "-");

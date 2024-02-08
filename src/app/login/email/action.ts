@@ -31,8 +31,6 @@ export const userLogin = async (formData: FormData) => {
         error: "User Not Exist !",
       };
     }
-    console.log(existingUser);
-
     const isPasswordCorrect = await bcrypt.compare(
       password,
       existingUser.password
