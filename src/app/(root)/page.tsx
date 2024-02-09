@@ -5,6 +5,7 @@ import {
   ReaderIcon,
   RocketIcon,
 } from "@radix-ui/react-icons";
+import Image from "next/image";
 import React from "react";
 
 const Page = () => {
@@ -13,13 +14,13 @@ const Page = () => {
       <div className="h-40 md:h-80 mb-20 flex flex-col items-center justify-center">
         <h1 className="text-5xl md:text-7xl font-extrabold my-5">Dummy APi</h1>
         <p className="max-w-4xl opacity-75 text-center">
-          "Revolutionize your development workflow with our customizable dummy
+          Revolutionize your development workflow with our customizable dummy
           API. Sign up, create projects, define endpoints, configure data, and
-          test seamlessly – all in one platform. Say goodbye to manual data
+          test seamlessly all in one platform. Say goodbye to manual data
           generation and hello to accelerated innovation. Simplify your testing
           process, streamline development, and unleash your creativity with
           ease. Get started today and experience the power of tailored dummy
-          data like never before."
+          data like never before.
         </p>
       </div>
       <div className="text-center mb-10">
@@ -130,14 +131,21 @@ const Page = () => {
             </div>
             <div className="sm:w-1/2">
               <Card className="p-2">
-                <img src="/sign-up-1.jpeg" alt="loading" />
+                <Image
+                  src="/sign-up-1.jpeg"
+                  alt="loading"
+                  width={1000}
+                  height={500}
+                />
               </Card>
             </div>
           </div>
           <div className="p-4 flex flex-col-reverse sm:flex-row justify-around  gap-8 mb-8">
             <div className="sm:w-1/2">
               <Card className="py-4">
-                <img
+                <Image
+                  width={1000}
+                  height={500}
                   src="/new-project.jpeg"
                   alt="loading"
                   className="mx-auto h-5/6 w-5/6"
@@ -170,14 +178,16 @@ const Page = () => {
                 types of data you want to simulate, such as users, products, or
                 orders. Each endpoint serves as a distinct data source, and you
                 can customize them by adding specific fields to mimic real-world
-                attributes. For instance, a "user" endpoint might include fields
-                for names, email addresses, and ages, while a "product" endpoint
+                attributes. For instance, a user endpoint might include fields
+                for names, email addresses, and ages, while a product endpoint
                 might include fields for names, descriptions, and prices.
               </p>
             </div>
             <div className="sm:w-1/2">
               <Card className="py-2">
-                <img
+                <Image
+                  width={1000}
+                  height={500}
                   src="/new-endpoint.jpeg"
                   alt="loading"
                   className="mx-auto h-5/6 w-5/6"
@@ -188,7 +198,9 @@ const Page = () => {
           <div className="p-4 flex flex-col-reverse sm:flex-row justify-around  gap-8 mb-8">
             <div className="sm:w-1/2">
               <Card className="py-4">
-                <img
+                <Image
+                  width={1000}
+                  height={500}
                   src="/api.png"
                   alt="loading"
                   className="mx-auto h-5/6 w-5/6"
@@ -202,7 +214,7 @@ const Page = () => {
               </h2>
               <p className="text-base opacity-75">
                 After setting up your project and configuring your data
-                generation settings, it's time to test the API to ensure
+                generation settings, it is time to test the API to ensure
                 everything is working as expected. Utilize the provided testing
                 tools or make API requests using your preferred method, such as
                 command-line tools like cURL or dedicated API testing software.
