@@ -7,7 +7,10 @@ import {
 } from "@radix-ui/react-icons";
 import Image from "next/image";
 import React from "react";
-
+import api from "@/res/api.png";
+import newProject from "@/res/new-project.jpeg";
+import newEndpoint from "@/res/new-endpoint.jpeg";
+import signUp from "@/res/sign-up-1.jpeg";
 const Page = () => {
   return (
     <div className="mt-16 px-4 sm:px-6 lg:px-8">
@@ -131,12 +134,7 @@ const Page = () => {
             </div>
             <div className="sm:w-1/2">
               <Card className="p-2">
-                <Image
-                  src="/sign-up-1.jpeg"
-                  alt="loading"
-                  width={1000}
-                  height={500}
-                />
+                <Image src={signUp} alt="loading" width={1000} height={500} />
               </Card>
             </div>
           </div>
@@ -146,7 +144,7 @@ const Page = () => {
                 <Image
                   width={1000}
                   height={500}
-                  src="/new-project.jpeg"
+                  src={newProject}
                   alt="loading"
                   className="mx-auto h-5/6 w-5/6"
                 />
@@ -188,7 +186,7 @@ const Page = () => {
                 <Image
                   width={1000}
                   height={500}
-                  src="/new-endpoint.jpeg"
+                  src={newEndpoint}
                   alt="loading"
                   className="mx-auto h-5/6 w-5/6"
                 />
@@ -201,7 +199,7 @@ const Page = () => {
                 <Image
                   width={1000}
                   height={500}
-                  src="/api.png"
+                  src={api}
                   alt="loading"
                   className="mx-auto h-5/6 w-5/6"
                 />
