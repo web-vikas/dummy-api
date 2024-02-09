@@ -1,5 +1,4 @@
-import ThemeSwitch from "@/components/control/theme-switch";
-import { HamburgerMenuIcon, TargetIcon } from "@radix-ui/react-icons";
+import { TargetIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
@@ -11,8 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { NavigationMenuDemo } from "./control/navigation";
-import { LogoutForm } from "./logout";
-import { Button } from "./ui/button";
+import LogoutForm from "./logout";
 
 const UserHeader = ({ name }: any) => {
   return (

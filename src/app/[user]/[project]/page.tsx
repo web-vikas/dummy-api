@@ -7,12 +7,11 @@ import { buttonVariants } from "@/components/ui/button";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { fetchEndPoints } from "./action";
 
-const page = async ({ params }: any) => {
+const EndPoints = async ({ params }: any) => {
   const { project } = params;
   const data = await fetchEndPoints(project);
   return (
     <div className="max-w-screen-xl mx-auto">
-      {/* <ProjectNav user={data.user} project={project} /> */}
       <div className="flex justify-between mt-3 px-3 items-center">
         <h1 className="font-bold text-xl ">Endpoints</h1>
         <Link
@@ -25,11 +24,12 @@ const page = async ({ params }: any) => {
       </div>
       <div className="my-4 max-sm:p-5 max-sm:text-xs">
         {!data.error ? (
-          data?.data.endpoints?.map((item: EndpointInfoProps, i: number) => (
+          data?.data?.map((item: EndpointInfoProps, i: number) => (
             <EndPointItem
               key={i}
               _id={item._id}
-              endpoint={item.endpoint}
+              endpointUrl={item.endpointUrl}
+              EndpointName={item.EndpointName}
               method={item.method}
               project={project}
               user={data.user}
@@ -43,4 +43,4 @@ const page = async ({ params }: any) => {
   );
 };
 
-export default page;
+export default EndPoints;

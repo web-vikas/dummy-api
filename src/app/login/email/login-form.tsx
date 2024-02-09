@@ -6,22 +6,28 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useFormStatus } from "react-dom";
 
-export const LoginForm = async () => {
+export const LoginForm = () => {
+  const { pending } = useFormStatus();
   const router = useRouter();
+
   const handelClientAction = async (formData: FormData) => {
-    const res = await userLogin(formData);
-    
-    if (res?.error) {
-      toast.error(res.error);
-    } else {
-      toast.success(res.message);
-      router.push("/dashboard");
+    try {
+      const res = await userLogin(formData);
+      if (res?.error) {
+        toast.error(res.error);
+      } else {
+        toast.success(res.message);
+        router.push("/dashboard");
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
     }
   };
 
   return (
-    <form action={handelClientAction} className="mx-4">
+    <form className="mx-4" action={handelClientAction}>
       <div className="flex flex-col gap-3 mb-3">
         <Label htmlFor="email">Email</Label>
         <Input id="email" placeholder="email@gmail.com" name="email" />
@@ -35,7 +41,9 @@ export const LoginForm = async () => {
           name="password"
         />
       </div>
-      <Button>Login</Button>
+      <Button disabled={pending} >
+        Login
+      </Button>
     </form>
   );
 };

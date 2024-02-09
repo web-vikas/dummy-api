@@ -16,18 +16,26 @@ const LoginPage = () => {
           Login into Fake / Api
         </h1>
         <div className="flex flex-col gap-3">
-          <Button className="font-medium p-6 text-md" variant="secondary">
-            <GitHubLogoIcon className="mr-2 h-5 w-5" /> Join with GitHub
+          <Button
+            className="font-medium p-6 text-md"
+            variant="secondary"
+            disabled
+          >
+            <GitHubLogoIcon className="mr-2 h-5 w-5" /> GitHub (coming soon)
           </Button>
-          <Button className="font-medium p-6 text-md" variant="linkedIn">
-            <LinkedInLogoIcon className="mr-2 h-5 w-5" /> Join with LinkedIn
+          <Button
+            className="font-medium p-6 text-md"
+            variant="linkedIn"
+            disabled
+          >
+            <LinkedInLogoIcon className="mr-2 h-5 w-5" /> LinkedIn (coming soon)
           </Button>
           <Separator className="my-5" />
           <Link
             href="/login/email"
             className={`${buttonVariants({ variant: "outline" })} !p-6`}
           >
-            <EnvelopeClosedIcon className="mr-3 h-5 w-5" /> Join With Email
+            <EnvelopeClosedIcon className="mr-3 h-5 w-5" /> Login With Email
           </Link>
         </div>
       </div>
