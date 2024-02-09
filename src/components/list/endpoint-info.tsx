@@ -13,6 +13,7 @@ import EndpointModel from "@/models/end-points";
 import {
   ClipboardCopyIcon,
   DotsHorizontalIcon,
+  LayersIcon,
   StarIcon,
   TrashIcon,
 } from "@radix-ui/react-icons";
@@ -22,7 +23,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import CopyButton from "../CopyButton";
-
+import { BracesIcon } from "lucide-react";
 export interface EndpointInfoProps {
   _id: string;
   endpointUrl: string;
@@ -59,7 +60,7 @@ const EndPointItem = ({
     <Card className="rounded-sm p-2 flex items-center justify-between mb-3">
       <div className="flex items-center gap-4">
         <div>
-          <Image height={30} width={30} alt="project-logo" src="/next.svg" />
+          <BracesIcon />
         </div>
         <div className="flex flex-col">
           <Link
@@ -112,8 +113,9 @@ const EndPointItem = ({
               </form>
             </DropdownMenuItem>
             <DropdownMenuItem className="flex justify-between px-4">
-              Copy URL
-              <CopyButton links={`/api/${user}/${project}/${endpointUrl}`} />
+              <CopyButton
+                links={`https://dummy-api.com/api/${user}/${project}/${endpointUrl}?token=YOUR_TOKEN`}
+              />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

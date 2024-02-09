@@ -37,7 +37,7 @@ export const SignUpForm = () => {
           name="password"
         />
       </div>
-      <Button>Login</Button>
+      <Button>Join</Button>
     </form>
   );
 };

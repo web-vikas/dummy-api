@@ -1,78 +1,103 @@
 import { Card } from "@/components/ui/card";
-import { CodeIcon } from "@radix-ui/react-icons";
+import {
+  CodeIcon,
+  MixerVerticalIcon,
+  ReaderIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons";
 import React from "react";
 
 const Page = () => {
   return (
     <div className="mt-16 px-4 sm:px-6 lg:px-8">
+      <div className="h-40 md:h-80 mb-20 flex flex-col items-center justify-center">
+        <h1 className="text-5xl md:text-7xl font-extrabold my-5">Dummy APi</h1>
+        <p className="max-w-4xl opacity-75 text-center">
+          "Revolutionize your development workflow with our customizable dummy
+          API. Sign up, create projects, define endpoints, configure data, and
+          test seamlessly – all in one platform. Say goodbye to manual data
+          generation and hello to accelerated innovation. Simplify your testing
+          process, streamline development, and unleash your creativity with
+          ease. Get started today and experience the power of tailored dummy
+          data like never before."
+        </p>
+      </div>
       <div className="text-center mb-10">
         <h4 className="text-xs font-extrabold">FOR DEVELOPER</h4>
-        <p className="text-2xl  text-red-400 font-bold my-3">
-          Build apps fast.
-        </p>
+        <p className="text-2xl  text-red-400 font-bold my-3">Setup fast.</p>
         <div className="max-w-lg mx-auto break-words">
           <p className="text-wrap text-base  text-center">
             Get your backend done in minutes instead of weeks. <br /> Easily
             build customizable content API and use them with a modern tech stack
-            i am developer
+            just in few clicks.
           </p>
         </div>
       </div>
       <div className="w-full md:w-7/12 m-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-        <Card className=" flex p-3 gap-3 hover:bg-secondary cursor-pointer">
+        <Card className=" flex p-3 gap-3 hover:bg-secondary py-4 cursor-pointer">
           <div className="text-center">
-            <CodeIcon className="h-10 w-10" />
+            <MixerVerticalIcon className="h-8 w-8 mr-2 mt-2" />
           </div>
           <div className="mt-2">
-            <h2 className="text-lg font-semibold mb-3">Open Source</h2>
+            <h2 className="text-lg font-semibold mb-3">Customizable</h2>
             <p className="text-sm opacity-75">
-              Forever. The entire codebase is available on GitHub and maintained
-              by hundreds of contributors Get your backend done in minutes
-              instead of weeks. Easily build customizable content API.
+              Emphasize the core functionality of your dummy API, which is the
+              ability for users to access customizable dummy data. Highlight how
+              developers can easily generate test data tailored to their
+              specific needs, saving time and effort during the development
+              process.
             </p>
           </div>
         </Card>
-        <Card className=" flex p-3 gap-3 hover:bg-secondary cursor-pointer">
+        <Card className=" flex p-3 gap-3 hover:bg-secondary cursor-pointer py-4">
           <div className="text-center">
-            <CodeIcon className="h-10 w-10" />
+            <CodeIcon className="h-8 w-8 mr-2 mt-2" />
           </div>
           <div className="mt-2">
-            <h2 className="text-lg font-semibold mb-3">Open Source</h2>
+            <h2 className="text-lg font-semibold mb-3">
+              Flexible Data Generation
+            </h2>
             <p className="text-sm opacity-75">
-              Forever. The entire codebase is available on GitHub and maintained
-              by hundreds of contributors Get your backend done in minutes
-              instead of weeks. Easily build customizable content API.
+              Highlight the flexibility of your API in generating various types
+              of dummy data. Whether developers need mock user profiles, product
+              listings, or transaction records, your API provides the tools to
+              create diverse datasets for comprehensive testing scenarios.
             </p>
           </div>
         </Card>
-        <Card className=" flex p-3 gap-3 hover:bg-secondary cursor-pointer">
+        <Card className=" flex p-3 gap-3 hover:bg-secondary cursor-pointer py-4">
           <div className="text-center">
-            <CodeIcon className="h-10 w-10" />
+            <ReaderIcon className="h-8 w-8 mr-2 mt-2" />
           </div>
           <div className="mt-2">
-            <h2 className="text-lg font-semibold mb-3">Open Source</h2>
+            <h2 className="text-lg font-semibold mb-3">
+              Realistic Simulation Capabilities
+            </h2>
             <p className="text-sm opacity-75">
-              Forever. The entire codebase is available on GitHub and maintained
-              by hundreds of contributors Get your backend done in minutes
-              instead of weeks. Easily build customizable content API.
+              Highlight the realism of the dummy data generated by your API.
+              Explain how the data closely resembles real-world scenarios,
+              enabling developers to simulate authentic user interactions, edge
+              cases, and system behaviors during testing.
             </p>
           </div>
         </Card>
-        <Card className=" flex p-3 gap-3 hover:bg-secondary cursor-pointer">
+        <Card className=" flex p-3 gap-3 hover:bg-secondary cursor-pointer pb-4">
           <div className="text-center">
-            <CodeIcon className="h-10 w-10" />
+            <RocketIcon className="h-8 w-8 mr-2 mt-2" />
           </div>
           <div className="mt-2">
-            <h2 className="text-lg font-semibold mb-3">Open Source</h2>
+            <h2 className="text-lg font-semibold mb-3">Cost-Effective</h2>
             <p className="text-sm opacity-75">
-              Forever. The entire codebase is available on GitHub and maintained
-              by hundreds of contributors Get your backend done in minutes
-              instead of weeks. Easily build customizable content API.
+              Emphasize the cost-effectiveness of using your dummy API for
+              testing and development purposes. Unlike accessing real data
+              sources or setting up complex testing environments, your API
+              provides a budget-friendly solution that helps reduce overhead
+              costs.
             </p>
           </div>
         </Card>
       </div>
-      <div>
+      <div className="max-w-screen-xl mx-auto">
         <div>
           <h4 className="text-xs font-extrabold text-center mt-5">
             STEP-BY-STEP GUIDE
@@ -83,102 +108,109 @@ const Page = () => {
           <div className="max-w-lg mx-auto break-words mb-16">
             <p className="text-wrap text-base text-center">
               Make a flexible data structure in 2 minutes. Use our powerful
-              features to customize your API. I am developer
+              features to customize your API.
             </p>
           </div>
-          <div className="p-4 flex flex-col sm:flex-row justify-around  gap-8">
+          <div className="p-4 flex flex-col sm:flex-row justify-around  gap-8 mb-8">
             <div className="sm:w-1/2">
-              <p className="mb-8">Step 1</p>
+              <p className="mb-8 font-bold underline">Step 1</p>
               <h2 className="mb-8 w-[400px] text-2xl  font-semibold">
-                Effortlessly create content structures that flex to your needs.
+                Sign Up.
               </h2>
               <p className="text-base opacity-75">
-                No matter which data structure is the best for your business,
-                you can easily define models and add relations to create rich
-                layout experiences.
-                <br /> No matter which data structure is the best for your
-                business,
-                <br /> you can easily define models and add relations to create
-                rich layout experiences.
+                Begin your journey with the dummy API by signing up for an
+                account. This initial step grants you access to a suite of tools
+                designed to simplify the process of generating custom dummy
+                data. Signing up is quick and straightforward, requiring only
+                basic information to get started. Registration grants you access
+                to a powerful platform for generating customizable dummy data.
+                Signing up is quick and easy, requiring only basic information
+                to get started.
               </p>
             </div>
             <div className="sm:w-1/2">
-              <img
-                src="./strapi-img.png"
-                alt="loading"
-                className="mx-auto h-5/6 w-5/6"
-              />
+              <Card className="p-2">
+                <img src="/sign-up-1.jpeg" alt="loading" />
+              </Card>
             </div>
           </div>
-          <div className="p-4 flex flex-col-reverse sm:flex-row justify-around  gap-8">
+          <div className="p-4 flex flex-col-reverse sm:flex-row justify-around  gap-8 mb-8">
             <div className="sm:w-1/2">
-              <img
-                src="./strapi-img.png"
-                alt="loading"
-                className="mx-auto h-5/6 w-5/6"
-              />
+              <Card className="py-4">
+                <img
+                  src="/new-project.jpeg"
+                  alt="loading"
+                  className="mx-auto h-5/6 w-5/6"
+                />
+              </Card>
             </div>
             <div className="sm:w-1/2">
-              <p className="mb-8">Step 1</p>
+              <p className="mb-8 font-bold underline">Step 2</p>
               <h2 className="mb-8 w-[400px] text-2xl font-semibold">
-                Effortlessly create content structures that flex to your needs.
+                Create a Project
               </h2>
               <p className="text-base opacity-75">
-                No matter which data structure is the best for your business,
-                you can easily define models and add relations to create rich
-                layout experiences.
-                <br /> No matter which data structure is the best for your
-                business,
-                <br /> you can easily define models and add relations to create
-                rich layout experiences.
+                Once logged in, create a new project to encapsulate your dummy
+                data configurations. Projects serve as organizational
+                containers, allowing you to manage and customize multiple sets
+                of dummy data independently. Think of projects as virtual
+                workspaces where you can define and refine your data generation
+                settings.
               </p>
             </div>
           </div>
-          <div className="p-4 flex flex-col sm:flex-row justify-around  gap-8">
+          <div className="p-4 flex flex-col sm:flex-row justify-around  gap-8 mb-8">
             <div className="sm:w-1/2">
-              <p className="mb-8">Step 1</p>
+              <p className="mb-8 font-bold underline">Step 3</p>
               <h2 className="mb-8 w-[400px] text-2xl font-semibold">
-                Effortlessly create content structures that flex to your needs.
+                Define Endpoints and Fields
               </h2>
               <p className="text-base opacity-75">
-                No matter which data structure is the best for your business,
-                you can easily define models and add relations to create rich
-                layout experiences.
-                <br /> No matter which data structure is the best for your
-                business,
-                <br /> you can easily define models and add relations to create
-                rich layout experiences.
+                Within your project, define endpoints to represent the various
+                types of data you want to simulate, such as users, products, or
+                orders. Each endpoint serves as a distinct data source, and you
+                can customize them by adding specific fields to mimic real-world
+                attributes. For instance, a "user" endpoint might include fields
+                for names, email addresses, and ages, while a "product" endpoint
+                might include fields for names, descriptions, and prices.
               </p>
             </div>
             <div className="sm:w-1/2">
-              <img
-                src="./strapi-img.png"
-                alt="loading"
-                className="mx-auto h-5/6 w-5/6"
-              />
+              <Card className="py-2">
+                <img
+                  src="/new-endpoint.jpeg"
+                  alt="loading"
+                  className="mx-auto h-5/6 w-5/6"
+                />
+              </Card>
             </div>
           </div>
-          <div className="p-4 flex flex-col-reverse sm:flex-row justify-around  gap-8">
+          <div className="p-4 flex flex-col-reverse sm:flex-row justify-around  gap-8 mb-8">
             <div className="sm:w-1/2">
-              <img
-                src="./strapi-img.png"
-                alt="loading"
-                className="mx-auto h-5/6 w-5/6"
-              />
+              <Card className="py-4">
+                <img
+                  src="/api.png"
+                  alt="loading"
+                  className="mx-auto h-5/6 w-5/6"
+                />
+              </Card>
             </div>
             <div className="sm:w-1/2">
-              <p className="mb-8">Step 1</p>
+              <p className="mb-8 font-bold underline">Step 4</p>
               <h2 className="mb-8 w-[400px] text-2xl font-semibold">
-                Effortlessly create content structures that flex to your needs.
+                Test the API
               </h2>
               <p className="text-base opacity-75">
-                No matter which data structure is the best for your business,
-                you can easily define models and add relations to create rich
-                layout experiences.
-                <br /> No matter which data structure is the best for your
-                business,
-                <br /> you can easily define models and add relations to create
-                rich layout experiences.
+                After setting up your project and configuring your data
+                generation settings, it's time to test the API to ensure
+                everything is working as expected. Utilize the provided testing
+                tools or make API requests using your preferred method, such as
+                command-line tools like cURL or dedicated API testing software.
+                Verify that the generated dummy data aligns with your
+                expectations and meets the requirements of your testing or
+                development scenarios. By thoroughly testing the API, you can
+                identify any potential issues or discrepancies early on and make
+                any necessary adjustments to your configurations.
               </p>
             </div>
           </div>

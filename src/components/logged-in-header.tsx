@@ -18,7 +18,7 @@ const UserHeader = ({ name }: any) => {
       <div className="flex items-center gap-2">
         <Link className="flex justify-center items-center gap-2" href="/">
           <TargetIcon className="h-9 w-9" />
-          <h1 className="font-extrabold text-xl">fake/api</h1>
+          <h1 className="font-extrabold text-xl">{process.env.PROJECT_NAME}</h1>
         </Link>
       </div>
       <div>

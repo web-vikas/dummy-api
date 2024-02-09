@@ -1,5 +1,4 @@
 "use client";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   DesktopIcon,
   MoonIcon,
@@ -14,8 +13,7 @@ import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
+  NavigationMenuList
 } from "@/components/ui/navigation-menu";
 
 const Footer = () => {
@@ -26,7 +24,7 @@ const Footer = () => {
       <div className="flex  justify-between">
         <div className="flex items-center">
           <TargetIcon className="h-7 w-7" />
-          <p className="ms-2">© fake/api</p>
+          <p className="ms-2">© dummy-api</p>
         </div>
         <div>
           <Button size="icon" variant="ghost" onClick={() => setTheme("light")}>
@@ -45,27 +43,21 @@ const Footer = () => {
         </div>
       </div>
       <div className="mt-5 flex justify-center">
-        <NavigationMenu >
+        <NavigationMenu>
           <NavigationMenuList className="gap-6 justify-center">
             <NavigationMenuItem>
               <Link href="/docs" legacyBehavior passHref>
-                <NavigationMenuLink >
-                 Home
-                </NavigationMenuLink>
+                <NavigationMenuLink>Home</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/login" legacyBehavior passHref>
-                <NavigationMenuLink >
-                Login
-                </NavigationMenuLink>
+                <NavigationMenuLink>Login</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/sign-up" legacyBehavior passHref>
-                <NavigationMenuLink >
-                Sign Up
-                </NavigationMenuLink>
+                <NavigationMenuLink>Sign Up</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
