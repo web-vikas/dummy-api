@@ -11,12 +11,20 @@ import api from "@/res/api.png";
 import newProject from "@/res/new-project.jpeg";
 import newEndpoint from "@/res/new-endpoint.jpeg";
 import signUp from "@/res/sign-up-1.jpeg";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 const Page = () => {
   return (
     <div className="mt-16 px-4 sm:px-6 lg:px-8">
-      <div className="h-40 md:h-80 mb-20 flex flex-col items-center justify-center">
-        <h1 className="text-5xl md:text-7xl font-extrabold my-5">Dummy APi</h1>
-        <p className="max-w-4xl opacity-75 text-center">
+      <div className="h-48 md:h-80 mb-32 sm:mb-20 flex flex-col items-center justify-center px-4 ">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold my-5 text-center"> 
+          Dummy API
+        </h1>
+        <p className="max-w-lg md:max-w-4xl opacity-75 text-base md:text-lg lg:text-xl text-center">
           Revolutionize your development workflow with our customizable dummy
           API. Sign up, create projects, define endpoints, configure data, and
           test seamlessly all in one platform. Say goodbye to manual data
@@ -26,6 +34,7 @@ const Page = () => {
           data like never before.
         </p>
       </div>
+
       <div className="text-center mb-10">
         <h4 className="text-xs font-extrabold">FOR DEVELOPER</h4>
         <p className="text-2xl  text-red-400 font-bold my-3">Setup fast.</p>
@@ -225,6 +234,31 @@ const Page = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="p-2">
+        <h1 className="text-center">FAQ</h1>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Is it accessible?</AccordionTrigger>
+            <AccordionContent>
+              Yes. It adheres to the WAI-ARIA design pattern.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Is it styled?</AccordionTrigger>
+            <AccordionContent>
+              Yes. It comes with default styles that matches the other
+              components&apos; aesthetic.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Is it animated?</AccordionTrigger>
+            <AccordionContent>
+              Yes. It's animated by default, but you can disable it if you
+              prefer.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </div>
   );
