@@ -1,10 +1,21 @@
 "use server";
 
+import { connect } from "@/config/db";
 import { isValidUser } from "@/helper/isValidUser";
-import { Find, FindAndUpdate, FindOne, Insert } from "@/helper/mongoose";
+import {
+  Aggregate,
+  Find,
+  FindAndUpdate,
+  FindOne,
+  Insert,
+} from "@/helper/mongoose";
 import EndpointModel from "@/models/end-points";
 import ProjectModel from "@/models/projects";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { z } from "zod";
+connect();
+
 export async function fetchEndPoints(project: string) {
   try {
     const token = cookies().get("user-token")?.value || "";
@@ -14,14 +25,37 @@ export async function fetchEndPoints(project: string) {
         error: "UnAuthorized !",
       };
     }
-    const endpoints = await FindOne({
+    let endpoints = await Aggregate({
       model: ProjectModel,
-      where: { projectUrl: project },
-      select: "endpoints",
+      data: [
+        [
+          {
+            $match: {
+              userId: isValid._id,
+              projectUrl: project,
+            },
+          },
+          {
+            $lookup: {
+              from: "endpoints",
+              localField: "_id",
+              foreignField: "projectId",
+              as: "data",
+            },
+          },
+          {
+            $project: {
+              data: 1,
+            },
+          },
+        ],
+      ],
     });
+    endpoints = endpoints[0].data;
 
-    if (!endpoints || endpoints.endpoints.length == 0) {
+    if (!endpoints || endpoints.length == 0) {
       return {
+        user: isValid.userName,
         error: "0 Endpoint Founds !",
       };
     }
@@ -38,10 +72,28 @@ export async function fetchEndPoints(project: string) {
 }
 
 export async function addEndpoint({ name, method, newData, project }: any) {
+  const newDataSchema = z.object({
+    name: z.string().min(4, { message: "Invalid Endpoint Name !" }),
+    method: z.string({ required_error: "Invalid Method !" }),
+  });
+  console.log(newData);
+
+  const data = {
+    name,
+    method,
+  };
   try {
-    if (!project || project.toString.length > 3) {
+    newDataSchema.parse(data);
+  } catch (error: any) {
+    return {
+      error: error.errors[0].message,
+    };
+  }
+
+  try {
+    if (!newData || newData.length == 0) {
       return {
-        error: "Invalid Project Name !",
+        error: "Please Add Some Fields.",
       };
     }
     const endpointUrl = name.toLowerCase().replaceAll(" ", "-");
@@ -59,18 +111,6 @@ export async function addEndpoint({ name, method, newData, project }: any) {
       where: { userId: isValid._id, projectUrl: project },
     });
 
-    const existEndpoint = existingProject.endpoints;
-
-    const test = existEndpoint.some((endpoint: any) =>
-      endpoint.endpoint.includes(endpointUrl)
-    );
-
-    if (test) {
-      return {
-        error: "Endpoint Already Exist ",
-      };
-    }
-
     const insertData = await Insert({
       model: EndpointModel,
       data: {
@@ -87,24 +127,7 @@ export async function addEndpoint({ name, method, newData, project }: any) {
         error: "Failed to insert",
       };
 
-    existEndpoint.push({
-      id: insertData._id,
-      endpoint: endpointUrl,
-      method: method,
-    });
-
-    const updateProject = await FindAndUpdate({
-      model: ProjectModel,
-      where: { _id: existingProject._id },
-      update: {
-        endpoints: existEndpoint,
-      },
-    });
-
-    if (!updateProject)
-      return {
-        error: "Failed to Update",
-      };
+    revalidatePath(`/${isValid.userName}/${project}`);
 
     return {
       message: `Added Successfully`,

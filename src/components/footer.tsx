@@ -1,5 +1,4 @@
 "use client";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   DesktopIcon,
   MoonIcon,
@@ -14,19 +13,18 @@ import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
+  NavigationMenuList
 } from "@/components/ui/navigation-menu";
 
 const Footer = () => {
   const { setTheme } = useTheme();
 
   return (
-    <footer className="mx-auto max-w-screen-xl mt-8">
+    <footer className="mx-auto max-w-screen-xl mt-8 p-2">
       <div className="flex  justify-between">
         <div className="flex items-center">
-          <TargetIcon className="h-8 w-8" />
-          <p className="ms-2">© 2024 Vikas Patel</p>
+          <TargetIcon className="h-7 w-7" />
+          <p className="ms-2">© dummy-api</p>
         </div>
         <div>
           <Button size="icon" variant="ghost" onClick={() => setTheme("light")}>
@@ -44,42 +42,22 @@ const Footer = () => {
           </Button>
         </div>
       </div>
-      <div className="mt-5">
+      <div className="mt-5 flex justify-center">
         <NavigationMenu>
-          <NavigationMenuList className="gap-6">
+          <NavigationMenuList className="gap-6 justify-center">
             <NavigationMenuItem>
               <Link href="/docs" legacyBehavior passHref>
-                <NavigationMenuLink >
-                  Documentation
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>
-                <NavigationMenuLink >
-                  Home
-                </NavigationMenuLink>
+                <NavigationMenuLink>Home</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/login" legacyBehavior passHref>
-                <NavigationMenuLink >
-                Help
-                </NavigationMenuLink>
+                <NavigationMenuLink>Login</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/login" legacyBehavior passHref>
-                <NavigationMenuLink >
-                Contact Sales
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/login" legacyBehavior passHref>
-                <NavigationMenuLink >
-                Blog
-                </NavigationMenuLink>
+              <Link href="/sign-up" legacyBehavior passHref>
+                <NavigationMenuLink>Sign Up</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>

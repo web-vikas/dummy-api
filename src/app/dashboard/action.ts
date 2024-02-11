@@ -1,15 +1,26 @@
 "use server";
 
+import { connect } from "@/config/db";
 import { isValidUser } from "@/helper/isValidUser";
-import { Find, FindOne, Insert } from "@/helper/mongoose";
+import {
+  Find,
+  FindAndUpdate,
+  FindOne,
+  GeneratePassword,
+  Insert,
+} from "@/helper/mongoose";
 import ProjectModel from "@/models/projects";
+import UserModel from "@/models/users";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+
+connect();
+
 export async function fetchProjects() {
   try {
     const token = cookies().get("user-token")?.value || "";
     const isValid = await isValidUser(token);
-  
+
     if (!isValid) {
       return {
         error: "UnAuthorized !",
@@ -18,7 +29,7 @@ export async function fetchProjects() {
     const projects = await Find({
       model: ProjectModel,
       where: { userId: isValid._id },
-      select: "projectName projectUrl",
+      select: "projectName projectUrl endpoints createdAt",
     });
 
     if (!projects || projects.length == 0) {
@@ -83,6 +94,32 @@ export async function addProject(formData: FormData) {
     revalidatePath("/dashboard");
     return {
       message: projectName + " Added Successfully",
+    };
+  } catch (error: any) {
+    return {
+      error: "Something Went Wrong !",
+    };
+  }
+}
+
+export async function fetchToken() {
+  try {
+    const token = cookies().get("user-token")?.value || "";
+    const isValid = await isValidUser(token);
+
+    if (!isValid) {
+      return {
+        error: "UnAuthorized !",
+      };
+    }
+
+    if (!isValid.apiToken)
+      return {
+        error: "No Token Found !",
+      };
+    return {
+      token: isValid.apiToken,
+      message: "Success ",
     };
   } catch (error: any) {
     return {

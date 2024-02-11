@@ -48,6 +48,18 @@ const IsExistsOne = async ({ model, where = {}, select = {} }: any) => {
   }
 };
 
+const Delete = async ({ model, where }: any) => {
+  try {
+    let query = model.deleteMany(where);
+    let doc = await query.exec();
+    if (doc) return true;
+    else return false;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
 const Insert = async <T extends Document>({
   model,
   data,
@@ -184,6 +196,7 @@ const GeneratePassword = (length = 8) => {
 };
 export {
   Aggregate,
+  Delete,
   Find,
   FindAndUpdate,
   FindOne,

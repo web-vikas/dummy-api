@@ -1,36 +1,32 @@
 "use client";
 
 import { Label } from "@/components/ui/label";
-import { userLogin } from "./action";
+import { userRegister } from "./action";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { useFormStatus } from "react-dom";
+import { redirect } from "next/navigation";
 
-export const LoginForm = () => {
-  const { pending } = useFormStatus();
-  const router = useRouter();
-
+export const SignUpForm = () => {
   const handelClientAction = async (formData: FormData) => {
-    try {
-      const res = await userLogin(formData);
-      if (res?.error) {
-        toast.error(res.error);
-      } else {
-        toast.success(res.message);
-        router.push("/dashboard");
-      }
-    } catch (error) {
-      console.error("Error occurred:", error);
+    const res = await userRegister(formData);
+    if (res?.error) {
+      toast.error(res.error);
+    } else {
+      toast.success(res.message);
+      redirect("/dashboard");
     }
   };
 
   return (
-    <form className="mx-4" action={handelClientAction}>
+    <form action={handelClientAction} className="mx-auto max-w-screen-sm ">
       <div className="flex flex-col gap-3 mb-3">
         <Label htmlFor="email">Email</Label>
         <Input id="email" placeholder="email@gmail.com" name="email" />
+        <Label htmlFor="name">Name</Label>
+        <Input id="name" placeholder="john" name="name" />
+        <Label htmlFor="username">Username</Label>
+        <Input id="username" placeholder="john" name="username" />
       </div>
       <div className="mb-3 flex flex-col gap-3">
         <Label htmlFor="password">Password</Label>
@@ -41,9 +37,7 @@ export const LoginForm = () => {
           name="password"
         />
       </div>
-      <Button disabled={pending} >
-        Login
-      </Button>
+      <Button>Join</Button>
     </form>
   );
 };
