@@ -3,9 +3,9 @@
 import { Label } from "@/components/ui/label";
 import { userRegister } from "./action";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
+import FormSubmitBtn from "@/components/FormSubmitBtn";
 
 export const SignUpForm = () => {
   const handelClientAction = async (formData: FormData) => {
@@ -37,7 +37,7 @@ export const SignUpForm = () => {
           name="password"
         />
       </div>
-      <Button>Join</Button>
+      <FormSubmitBtn className="font-semibold">Join</FormSubmitBtn>
     </form>
   );
 };
