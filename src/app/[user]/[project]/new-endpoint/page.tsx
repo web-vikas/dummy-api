@@ -18,9 +18,20 @@ import { Separator } from "@/components/ui/separator";
 
 const dataOptions = [
   { value: "person.avatar", label: "Avatar" },
+  { value: "finance.amount", label: "Amount" },
+  { value: "finance.accountType", label: "Account Type" },
+  { value: "finance.accountNumber", label: "Account Number" },
   { value: "person.bio", label: "Bio" },
+  { value: "finance.bitcoinAddress", label: "Bitcoin Address" },
+  { value: "finance.creditCardCVV", label: "Credit Card CVV" },
+  { value: "finance.creditCardIssuer", label: "Credit Card Issuer" },
+  { value: "finance.creditCardNumber", label: "Credit Card Number" },
+  { value: "finance.currencyCode", label: "Currency Code" },
+  { value: "finance.currencyName", label: "Currency Name" },
+  { value: "finance.currencySymbol", label: "Currency Symbol" },
   { value: "address.city", label: "City" },
   { value: "address.country", label: "Country" },
+  { value: "finance.date", label: "Date" },
   { value: "person.email", label: "Email" },
   { value: "person.firstName", label: "First Name" },
   { value: "person.fullName", label: "Full Name" },
@@ -28,12 +39,16 @@ const dataOptions = [
   { value: "person.jobTitle", label: "Job Title" },
   { value: "person.lastName", label: "Last Name" },
   { value: "person.middleName", label: "Middle Name" },
+  { value: "finance.maskedNumber", label: "Masked Number" },
   { value: "person.prefix", label: "Prefix" },
+  { value: "finance.pin", label: "Pin" },
   { value: "person.phone", label: "Phone" },
+  { value: "finance.routingNumber", label: "Routing Number" },
   { value: "address.state", label: "State" },
   { value: "address.streetAddress", label: "Street Address" },
+  { value: "finance.transactionType", label: "Transaction Type" },
+  { value: "finance.transactionDescription", label: "Transaction Description" },
   { value: "address.zipCode", label: "Zip Code" },
-  { value: "person.zodiacSign", label: "Zodiac Sign" },
 ];
 
 const Page = ({ params }: any) => {

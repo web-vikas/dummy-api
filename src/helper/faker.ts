@@ -14,6 +14,24 @@ interface Person {
   avatar: string;
   email: string;
 }
+interface Finance {
+  accountType: string;
+  accountNumber: string;
+  amount: string;
+  bitcoinAddress: string;
+  creditCardCVV: string;
+  creditCardIssuer: string;
+  creditCardNumber: string;
+  currencyCode: string;
+  currencyName: string;
+  currencySymbol: string;
+  maskedNumber: string;
+  pin: string;
+  routingNumber: string;
+  transactionDescription: string;
+  transactionType: string;
+  date: string;
+}
 
 interface Address {
   state: string;
@@ -96,5 +114,45 @@ const getAddressInfo = (
   }
   return address;
 };
+const getFinanceInfo = (
+  requestedFields?: (keyof Finance)[]
+): Finance | { [key: string]: string } => {
+  let issuer = faker.finance.creditCardIssuer();
 
-export { getPersonInfo, getAddressInfo };
+  const finance: Finance = {
+    accountType: faker.finance.accountName(),
+    accountNumber: faker.finance.accountNumber({ length: 12 }),
+    amount: faker.finance.amount({
+      min: 5,
+      max: 10,
+      dec: 5,
+      symbol: "",
+      autoFormat: true,
+    }),
+    bitcoinAddress: faker.finance.bitcoinAddress(),
+    creditCardIssuer: issuer,
+    creditCardCVV: faker.finance.creditCardCVV(),
+    creditCardNumber: faker.finance.creditCardNumber({ issuer: issuer }),
+    currencyCode: faker.finance.currencyCode(),
+    currencyName: faker.finance.currencyName(),
+    currencySymbol: faker.finance.currencySymbol(),
+    maskedNumber: faker.finance.maskedNumber(),
+    pin: faker.finance.pin(),
+    routingNumber: faker.finance.routingNumber(),
+    transactionDescription: faker.finance.transactionDescription(),
+    transactionType: faker.finance.transactionType(),
+    date: faker.date.anytime().toDateString(),
+  };
+  if (requestedFields && requestedFields.length != 0) {
+    const filteredAddress: { [key: string]: string } = {};
+    requestedFields.forEach((field) => {
+      if (finance.hasOwnProperty(field)) {
+        filteredAddress[field] = finance[field];
+      }
+    });
+    return filteredAddress;
+  }
+  return finance;
+};
+
+export { getPersonInfo, getAddressInfo, getFinanceInfo };

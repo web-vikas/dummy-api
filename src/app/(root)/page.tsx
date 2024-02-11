@@ -34,7 +34,7 @@ const Page = () => {
           data like never before.
         </p>
       </div>
-      <div className="mt-8 text-center">
+      <div className="my-12 text-center">
         <h4 className="text-xs font-extrabold mt-1">FOR DEVELOPER</h4>
         <p className="text-2xl text-red-400 font-bold">Setup fast.</p>
         <div className="max-w-lg mx-auto break-words mt-1">
@@ -66,14 +66,12 @@ const Page = () => {
             <CodeIcon className="h-8 w-8 mr-2 mt-2" />
           </div>
           <div className="mt-2">
-            <h2 className="text-lg font-semibold mb-3">
-              Flexible Data Generation
-            </h2>
+            <h2 className="text-lg font-semibold mb-3">Open Source</h2>
             <p className="text-sm opacity-75">
-              Highlight the flexibility of your API in generating various types
-              of dummy data. Whether developers need mock user profiles, product
-              listings, or transaction records, your API provides the tools to
-              create diverse datasets for comprehensive testing scenarios.
+              Emphasize that the Dummy API is an open-source project, available
+              for free to all users. By leveraging the power of open-source
+              collaboration, the project fosters a vibrant community of
+              developers who contribute to its growth and improvement.
             </p>
           </div>
         </Card>
@@ -98,18 +96,15 @@ const Page = () => {
             <RocketIcon className="h-8 w-8 mr-2 mt-2" />
           </div>
           <div className="mt-2">
-            <h2 className="text-lg font-semibold mb-3">Cost-Effective</h2>
+            <h2 className="text-lg font-semibold mb-3">Seamless Integration</h2>
             <p className="text-sm opacity-75">
-              Emphasize the cost-effectiveness of using your dummy API for
-              testing and development purposes. Unlike accessing real data
-              sources or setting up complex testing environments, your API
-              provides a budget-friendly solution that helps reduce overhead
-              costs.
+            Highlight the ease of integration with various programming languages, frameworks, and development environments. Whether developers are working on web applications, mobile apps, or backend systems, the Dummy API offers flexible integration options, making it effortless to incorporate into existing workflows and projects.
             </p>
           </div>
         </Card>
       </div>
-      <div className="mx-auto mt-8">
+      <div className="mx-auto my-12">
+
         <div>
           <h4 className="text-xs font-extrabold text-center">
             STEP-BY-STEP GUIDE
@@ -117,7 +112,7 @@ const Page = () => {
           <p className="text-2xl text-red-400 font-bold text-center">
             How does it work?
           </p>
-          <div className="max-w-lg mx-auto break-words">
+          <div className="max-w-lg mx-auto break-words mb-12">
             <p className="text-wrap text-base text-center">
               Make a flexible data structure in 2 minutes. Use our powerful
               features to customize your API.
