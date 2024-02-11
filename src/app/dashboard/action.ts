@@ -3,14 +3,9 @@
 import { connect } from "@/config/db";
 import { isValidUser } from "@/helper/isValidUser";
 import {
-  Find,
-  FindAndUpdate,
-  FindOne,
-  GeneratePassword,
-  Insert,
+  Find, FindOne, Insert
 } from "@/helper/mongoose";
 import ProjectModel from "@/models/projects";
-import UserModel from "@/models/users";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
