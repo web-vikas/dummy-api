@@ -19,12 +19,12 @@ import {
 } from "@/components/ui/accordion";
 const Page = () => {
   return (
-    <div className="mt-16 px-4 sm:px-6 lg:px-8">
-      <div className="h-48 md:h-80 mb-32 sm:mb-20 flex flex-col items-center justify-center px-4 ">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold my-5 text-center">
+    <div className="max-xl:w-[90%] pt-6 sm:pt-7 max-w-screen-xl mx-auto">
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-center">
           Dummy API
         </h1>
-        <p className="max-w-lg md:max-w-4xl opacity-75 text-base md:text-lg lg:text-xl text-justify md:text-center">
+        <p className="mt-3 max-w-lg md:max-w-4xl opacity-75 text-base md:text-lg lg:text-xl text-justify md:text-center">
           Revolutionize your development workflow with our customizable dummy
           API. Sign up, create projects, define endpoints, configure data, and
           test seamlessly all in one platform. Say goodbye to manual data
@@ -34,19 +34,18 @@ const Page = () => {
           data like never before.
         </p>
       </div>
-
-      <div className="text-center mb-10">
-        <h4 className="text-xs font-extrabold">FOR DEVELOPER</h4>
-        <p className="text-2xl  text-red-400 font-bold my-3">Setup fast.</p>
-        <div className="max-w-lg mx-auto break-words">
-          <p className="text-wrap text-base  text-center">
-            Get your backend done in minutes instead of weeks. <br /> Easily
-            build customizable content API and use them with a modern tech stack
-            just in few clicks.
+      <div className="mt-8 text-center">
+        <h4 className="text-xs font-extrabold mt-1">FOR DEVELOPER</h4>
+        <p className="text-2xl text-red-400 font-bold">Setup fast.</p>
+        <div className="max-w-lg mx-auto break-words mt-1">
+          <p className="text-base sm:text-center text-justify">
+            Get your backend done in minutes instead of weeks. Easily build
+            customizable content API and use them with a modern tech stack just
+            in few clicks.
           </p>
         </div>
       </div>
-      <div className="w-full md:w-7/12 m-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:w-[90%] xl:w-[70%] mx-auto mt-6">
         <Card className=" flex p-3 gap-3 hover:bg-secondary py-4 cursor-pointer">
           <div className="text-center">
             <MixerVerticalIcon className="h-8 w-8 mr-2 mt-2" />
@@ -110,26 +109,24 @@ const Page = () => {
           </div>
         </Card>
       </div>
-      <div className="max-w-screen-xl mx-auto">
+      <div className="mx-auto mt-8">
         <div>
-          <h4 className="text-xs font-extrabold text-center mt-5">
+          <h4 className="text-xs font-extrabold text-center">
             STEP-BY-STEP GUIDE
           </h4>
-          <p className="text-2xl text-red-400 font-bold my-3 text-center">
+          <p className="text-2xl text-red-400 font-bold text-center">
             How does it work?
           </p>
-          <div className="max-w-lg mx-auto break-words mb-16">
+          <div className="max-w-lg mx-auto break-words">
             <p className="text-wrap text-base text-center">
               Make a flexible data structure in 2 minutes. Use our powerful
               features to customize your API.
             </p>
           </div>
-          <div className="p-4 flex flex-col sm:flex-row justify-around  gap-8 mb-8">
+          <div className="flex flex-col sm:flex-row justify-around gap-8 mt-4">
             <div className="sm:w-1/2">
-              <p className="mb-8 font-bold underline">Step 1</p>
-              <h2 className="mb-8 w-[400px] text-2xl  font-semibold">
-                Sign Up.
-              </h2>
+              <p className="font-bold underline mt-3">Step 1</p>
+              <h2 className="mt-4 text-2xl  font-semibold">Sign Up.</h2>
               <p className="text-base opacity-75">
                 Begin your journey with the dummy API by signing up for an
                 account. This initial step grants you access to a suite of tools
@@ -147,7 +144,7 @@ const Page = () => {
               </Card>
             </div>
           </div>
-          <div className="p-4 flex flex-col-reverse sm:flex-row justify-around  gap-8 mb-8">
+          <div className="mt-8 flex flex-col-reverse sm:flex-row justify-around  gap-8 mb-8">
             <div className="sm:w-1/2">
               <Card className="py-4">
                 <Image
@@ -160,11 +157,9 @@ const Page = () => {
               </Card>
             </div>
             <div className="sm:w-1/2">
-              <p className="mb-8 font-bold underline">Step 2</p>
-              <h2 className="mb-8 w-[400px] text-2xl font-semibold">
-                Create a Project
-              </h2>
-              <p className="text-base opacity-75">
+              <p className="font-bold underline">Step 2</p>
+              <h2 className="mt-4 text-2xl font-semibold">Create a Project</h2>
+              <p className="text-base opacity-75 mt-1">
                 Once logged in, create a new project to encapsulate your dummy
                 data configurations. Projects serve as organizational
                 containers, allowing you to manage and customize multiple sets
@@ -174,10 +169,10 @@ const Page = () => {
               </p>
             </div>
           </div>
-          <div className="p-4 flex flex-col sm:flex-row justify-around  gap-8 mb-8">
+          <div className="flex flex-col sm:flex-row justify-around gap-8 mb-8">
             <div className="sm:w-1/2">
-              <p className="mb-8 font-bold underline">Step 3</p>
-              <h2 className="mb-8 w-[400px] text-2xl font-semibold">
+              <p className="font-bold underline">Step 3</p>
+              <h2 className="mt-4 text-2xl font-semibold">
                 Define Endpoints and Fields
               </h2>
               <p className="text-base opacity-75">
@@ -202,7 +197,7 @@ const Page = () => {
               </Card>
             </div>
           </div>
-          <div className="p-4 flex flex-col-reverse sm:flex-row justify-around  gap-8 mb-8">
+          <div className="flex flex-col-reverse sm:flex-row justify-around  gap-8 mb-8">
             <div className="sm:w-1/2">
               <Card className="py-4">
                 <Image
@@ -215,10 +210,8 @@ const Page = () => {
               </Card>
             </div>
             <div className="sm:w-1/2">
-              <p className="mb-8 font-bold underline">Step 4</p>
-              <h2 className="mb-8 w-[400px] text-2xl font-semibold">
-                Test the API
-              </h2>
+              <p className="font-bold underline">Step 4</p>
+              <h2 className="mt-4 text-2xl font-semibold">Test the API</h2>
               <p className="text-base opacity-75">
                 After setting up your project and configuring your data
                 generation settings, it is time to test the API to ensure
@@ -235,7 +228,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="p-2 max-sm:m-5 mx-auto max-w-screen-lg">
+      <div className="mx-auto max-w-screen-lg">
         <h1 className="text-center font-extrabold text-2xl">F&Q</h1>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
@@ -247,7 +240,8 @@ const Page = () => {
               logging in, users gain access to personalized features and project
               management tools tailored to their specific needs. This ensures a
               seamless experience while enabling us to provide customized
-              support and security measures for each user&apos;s API configurations.
+              support and security measures for each user&apos;s API
+              configurations.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
