@@ -1,0 +1,28 @@
+"use client";
+
+import { ComponentProps, ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { useFormStatus } from "react-dom";
+import { Loader2 } from "lucide-react";
+
+type FormSubmitBtn = {
+  children: ReactNode;
+  className?: string;
+} & ComponentProps<"button">;
+
+export default function FormSubmitBtn({ children, className }: FormSubmitBtn) {
+  const { pending } = useFormStatus();
+  // const pending = true;
+
+  return (
+    <Button type="submit" className={`${className} w-[110px]`}>
+      {children}
+      {pending ? (
+        <Loader2
+          className={`animate-spin w-6 h-6 font-bold`}
+          strokeWidth={"3"}
+        />
+      ) : null}
+    </Button>
+  );
+}

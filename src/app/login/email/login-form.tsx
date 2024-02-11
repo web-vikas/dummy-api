@@ -1,26 +1,23 @@
 "use client";
-
 import { Label } from "@/components/ui/label";
 import { userLogin } from "./action";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { useFormStatus } from "react-dom";
+import FormSubmitBtn from "@/components/FormSubmitBtn";
 
 export const LoginForm = () => {
-  const { pending } = useFormStatus();
   const router = useRouter();
 
   const handelClientAction = async (formData: FormData) => {
     try {
       const res = await userLogin(formData);
       if (res?.error) {
-        toast.error(res.error);
-      } else {
-        toast.success(res.message);
-        router.push("/dashboard");
+        return toast.error(res.error);
       }
+      toast.success(res.message);
+      router.push("/dashboard");
     } catch (error) {
       console.error("Error occurred:", error);
     }
@@ -41,9 +38,7 @@ export const LoginForm = () => {
           name="password"
         />
       </div>
-      <Button disabled={pending} >
-        Login
-      </Button>
+      <FormSubmitBtn className="font-semibold">login</FormSubmitBtn>
     </form>
   );
 };

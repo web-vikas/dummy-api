@@ -14,6 +14,8 @@ import { Label } from "@/components/ui/label";
 import { PlusCircledIcon, PlusIcon } from "@radix-ui/react-icons";
 import { addProject } from "./action";
 import { toast } from "sonner";
+import FormSubmitBtn from "@/components/FormSubmitBtn";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export function NewProjectModal() {
   const handelClientAction = async (formData: FormData) => {
@@ -44,9 +46,9 @@ export function NewProjectModal() {
             <Input id="name" name="projectName" />
           </div>
           <DialogFooter>
-            <Button type="submit">
-              <PlusCircledIcon className="mr-3" /> Add
-            </Button>
+            <DialogClose>
+              <FormSubmitBtn className="font-semibold">Add</FormSubmitBtn>
+            </DialogClose>
           </DialogFooter>
         </form>
       </DialogContent>
