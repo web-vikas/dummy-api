@@ -15,14 +15,14 @@ export default function FormSubmitBtn({ children, className }: FormSubmitBtn) {
   // const pending = true;
 
   return (
-    <Button type="submit" className={`${className} w-[110px]`}>
-      {children}
+    <Button type="submit" disabled={pending} className={`${className} w-[110px]`}>
+
       {pending ? (
         <Loader2
-          className={`animate-spin w-6 h-6 font-bold`}
+          className={`animate-spin w-6 h-6 font-bold mr-3`}
           strokeWidth={"3"}
         />
-      ) : null}
+      ) : null} {children}
     </Button>
   );
 }
