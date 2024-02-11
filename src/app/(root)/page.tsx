@@ -104,6 +104,7 @@ const Page = () => {
         </Card>
       </div>
       <div className="mx-auto my-12">
+
         <div>
           <h4 className="text-xs font-extrabold text-center">
             STEP-BY-STEP GUIDE
