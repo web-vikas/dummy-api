@@ -38,7 +38,7 @@ export const LoginForm = () => {
           name="password"
         />
       </div>
-      <FormSubmitBtn className="font-semibold">login</FormSubmitBtn>
+      <FormSubmitBtn className="font-semibold">Login</FormSubmitBtn>
     </form>
   );
 };
