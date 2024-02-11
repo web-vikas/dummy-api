@@ -1,5 +1,5 @@
 import { connect } from "@/config/db";
-import { getAddressInfo, getPersonInfo } from "@/helper/faker";
+import { getAddressInfo, getFinanceInfo, getPersonInfo } from "@/helper/faker";
 import { FindOne, HandleError } from "@/helper/mongoose";
 import EndpointModel from "@/models/end-points";
 import UserModel from "@/models/users";
@@ -28,7 +28,7 @@ function processFields(fields: any) {
   const variableSources: { [key: string]: any } = {
     person: getPersonInfo(),
     address: getAddressInfo(),
-    // Add more variables as needed
+    finance: getFinanceInfo(),
   };
 
   const result: Record<string, any> = {};
