@@ -16,6 +16,26 @@ import {
 import { PlusCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import { Separator } from "@/components/ui/separator";
 
+const dataOptions = [
+  { value: "person.avatar", label: "Avatar" },
+  { value: "person.bio", label: "Bio" },
+  { value: "address.city", label: "City" },
+  { value: "address.country", label: "Country" },
+  { value: "person.email", label: "Email" },
+  { value: "person.firstName", label: "First Name" },
+  { value: "person.fullName", label: "Full Name" },
+  { value: "person.gender", label: "Gender" },
+  { value: "person.jobTitle", label: "Job Title" },
+  { value: "person.lastName", label: "Last Name" },
+  { value: "person.middleName", label: "Middle Name" },
+  { value: "person.prefix", label: "Prefix" },
+  { value: "person.phone", label: "Phone" },
+  { value: "address.state", label: "State" },
+  { value: "address.streetAddress", label: "Street Address" },
+  { value: "address.zipCode", label: "Zip Code" },
+  { value: "person.zodiacSign", label: "Zodiac Sign" },
+];
+
 const Page = ({ params }: any) => {
   interface Field {
     fieldName: string;
@@ -135,23 +155,11 @@ const Page = ({ params }: any) => {
               className="px-2 py-1.5 rounded-md bg-primary-foreground border"
             >
               <option value="">Select Value Type</option>
-              <option value="person.gender">Gender</option>
-              <option value="person.prefix">Prefix</option>
-              <option value="person.firstName">First Name</option>
-              <option value="person.middleName">Middle Name</option>
-              <option value="person.lastName">Last Name</option>
-              <option value="person.fullName">Full Name</option>
-              <option value="person.jobTitle">Job Title</option>
-              <option value="person.bio">Bio</option>
-              <option value="person.zodiacSign">Zodiac Sign</option>
-              <option value="person.phone">Phone</option>
-              <option value="person.avatar">Avatar</option>
-              <option value="person.email">Email</option>
-              <option value="address.state">State</option>
-              <option value="address.zipCode">Zip Code</option>
-              <option value="address.country">Country</option>
-              <option value="address.streetAddress">Street Address</option>
-              <option value="address.city">City</option>
+              {dataOptions.map((option, optionIndex) => (
+                <option key={optionIndex} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
             </select>
           </div>
           <div>
