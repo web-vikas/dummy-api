@@ -24,7 +24,7 @@ const Footer = () => {
       <div className="flex  justify-between">
         <div className="flex items-center">
           <TargetIcon className="h-7 w-7" />
-          <p className="ms-2">© dummy-api</p>
+          <p className="ms-2">© dmy-api</p>
         </div>
         <div>
           <Button size="icon" variant="ghost" onClick={() => setTheme("light")}>
