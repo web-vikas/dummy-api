@@ -114,7 +114,7 @@ const EndPointItem = ({
             </DropdownMenuItem>
             <DropdownMenuItem className="flex justify-between px-4">
               <CopyButton
-                links={`https://dummy-api.com/api/${user}/${project}/${endpointUrl}?token=YOUR_TOKEN`}
+                links={`https://dmy-api.vercel.app/api/${user}/${project}/${endpointUrl}?token=YOUR_TOKEN`}
               />
             </DropdownMenuItem>
           </DropdownMenuContent>
