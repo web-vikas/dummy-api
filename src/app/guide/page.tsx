@@ -48,7 +48,7 @@ function Guide() {
         />
         <p className="my-2 text-xl">
           After click you New Endpoint and enter{" "}
-          <span className="text-red-700">endpoint name</span> and{" "}
+          <span className="text-red-700">endpoint name </span> and{" "}
           <br className="hidden md:inline-block" /> choice your Request Method{" "}
           <span className="text-red-700">GET</span> or{" "}
           <span className="text-red-700">POST</span> and add field according
