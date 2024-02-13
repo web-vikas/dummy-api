@@ -14,7 +14,7 @@ function Guide() {
       <h1 className="text-center mt-10 font-bold text-4xl md:text-6xl font-extra bold">
         How to setup dummy-api <span className="text-red-700">Steps</span>{" "}
       </h1>
-      <div className="mt-12 flex items-center justify-center flex-col ">
+      <div className="mt-12 flex items-center justify-center flex-col text-center ">
         <h1 className="mb-2 font-bold text-2xl my-10">
           Step 1: Signup and create project
         </h1>
