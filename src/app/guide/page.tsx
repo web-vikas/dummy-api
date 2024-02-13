@@ -16,7 +16,7 @@ function Guide() {
       </h1>
       <div className="mt-12 flex items-center justify-center flex-col text-center ">
         <h1 className="mb-2 font-bold text-2xl my-10">
-          Step 1: Signup and create project
+          Step 1: Sign up and create project
         </h1>
         <Image
           src={signUp}
@@ -26,7 +26,7 @@ function Guide() {
           className="rounded-md"
         />
         <p className="my-2 text-xl">
-          Step:1 is create account on dummy-api.com and{" "}
+          Step:1 is create account on dummy-api and{" "}
           <br className="hidden md:inline-block" />
           Create project names and click project name{" "}
           <span className="text-red-700">Step 2</span>{" "}
@@ -47,11 +47,11 @@ function Guide() {
           className="rounded-md"
         />
         <p className="my-2 text-xl">
-          After click you New Endpoint and enter endpoint name{" "}
+          After click you New Endpoint and enter{" "}
           <span className="text-red-700">endpoint name</span> and{" "}
           <br className="hidden md:inline-block" /> choice your Request Method{" "}
           <span className="text-red-700">GET</span> or{" "}
-          <span className="text-red-700">POST</span> and add filds according
+          <span className="text-red-700">POST</span> and add field according
           your use <br className="hidden md:inline-block" />
           After <span className="text-red-700">Submit button</span> and click 3
           dot and copy api link
@@ -69,7 +69,7 @@ function Guide() {
         <p className="my-2 text-xl">
           After copy link go to token section and copy your token{" "}
           <br className="hidden md:inline-block" />
-          past your token end pof url
+          paste your token end of url
         </p>
         <Image
           src={token}
@@ -95,9 +95,9 @@ function Guide() {
         />
         <p className="my-2 text-xl">
           {" "}
-          After past end of url on your token and{" "}
+          After paste end of url on your token and{" "}
           <span className="text-red-700">
-            yourtoken&limit=10 or according yourtoken need
+            yourtoken&limit=10 or according your need
           </span>
         </p>
       </div>
