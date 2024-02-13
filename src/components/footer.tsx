@@ -51,6 +51,7 @@ const Footer = () => {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
+            
               <Link href="/login" legacyBehavior passHref>
                 <NavigationMenuLink>Login</NavigationMenuLink>
               </Link>
@@ -59,7 +60,11 @@ const Footer = () => {
               <Link href="/sign-up" legacyBehavior passHref>
                 <NavigationMenuLink>Sign Up</NavigationMenuLink>
               </Link>
+              
             </NavigationMenuItem>
+            <Link href={"/guide"} className="mr-2">
+            Guide
+          </Link>
           </NavigationMenuList>
         </NavigationMenu>
       </div>

@@ -27,7 +27,10 @@ const UserHeader = ({ name }: any) => {
             <HamburgerMenuIcon />
           </Button>
         )} */}
-        <div className="flex justify-center gap-3">
+        <div className="flex justify-center gap-3 items-center ">
+          <Link href={"/guide"} className="mr-2 ">
+            Guide
+          </Link>
           {name ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
